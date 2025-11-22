@@ -1,0 +1,120 @@
+{
+  "project_title": "JessyLife Clinic Rebrand – One-Page Luxury Static Site",
+  "description": "Build a high-end, modern, single-page HTML/CSS/JavaScript website for JessyLife Physiotherapy & Rehabilitation Clinic, emphasizing home-based therapy, rehab facility, expert care, and accessibility.",
+  "brand": {
+    "name": "JessyLife Physiotherapy & Rehabilitation Clinic",
+    "tagline": "We Believe in a Healthy You",
+    "location": "Accra, Ghana (Achimota / Dome area)",
+    "contact": {
+      "phone": "0201300716",
+      "email": "hrmanagerjessylifeclinic@gmail.com"
+    }
+  },
+  "audience": [
+    "Patients recovering from surgery or injury",
+    "Elderly seeking geriatric physiotherapy",
+    "Families looking for pediatric rehabilitation",
+    "Professionals wanting home-based therapy",
+    "Doctors / medical practitioners for referrals"
+  ],
+  "goals": [
+    "Drive bookings for home-based and facility physiotherapy",
+    "Capture referral leads from hospitals and doctors",
+    "Establish JessyLife as a premium, trustworthy rehab clinic",
+    "Provide clear information on services and how therapy works"
+  ],
+  "style": {
+    "theme": "Luxury healthcare",
+    "color_palette": {
+      "primary": "#00b1a9",
+      "secondary": "#0f1724",
+      "accent": "#d4af37",
+      "background": "#f6fbfa"
+    },
+    "typography": {
+      "heading": "Poppins, sans-serif",
+      "body": "Open Sans, sans-serif"
+    },
+    "imagery": "High-resolution photos of therapy rooms, home therapy visits, gym setup, peaceful clinic spaces",
+    "animations": ["fadeIn on scroll", "slide-up for sections", "hover scale on CTA buttons", "parallax background effect"]
+  },
+  "sections": [
+    {
+      "name": "Hero",
+      "content": {
+        "headline": "JessyLife Physiotherapy & Rehabilitation Clinic",
+        "subheadline": "Expert care in clinic or at home — heal, recover, thrive.",
+        "cta": ["Book Now", "Contact Us"],
+        "background": "image or soft gradient"
+      }
+    },
+    {
+      "name": "How We Help",
+      "content": [
+        "Home-based Therapy: Personalized treatment from your living room.",
+        "Rehabilitation Programs: Post-surgery, injury recovery, or chronic care.",
+        "Pain Management: Back pain, joint pain, sports injuries.",
+        "Geriatric & Pediatric Care: Specialized therapy for seniors and children."
+      ]
+    },
+    {
+      "name": "Why JessyLife",
+      "content": [
+        "Licensed, compassionate physiotherapists",
+        "Tailored programs for home or facility visits",
+        "Modern, accessible facilities designed for comfort",
+        "Tech-enabled booking and client-focused care"
+      ]
+    },
+    {
+      "name": "Services",
+      "content": [
+        "Physiotherapy",
+        "Occupational Therapy",
+        "Speech & Language Therapy",
+        "Massage Therapy",
+        "Dietary & Nutrition Therapy",
+        "Home-Based Visits"
+      ]
+    },
+    {
+      "name": "Process",
+      "steps": [
+        { "title": "Book Online", "description": "Fill our simple form to request a session." },
+        { "title": "Get Matched", "description": "We match you with a licensed therapist." },
+        { "title": "Choose Location", "description": "Therapy at home or in our facility." },
+        { "title": "Begin Treatment", "description": "Enjoy expert, guided recovery tailored to you." }
+      ]
+    },
+    {
+      "name": "Testimonials",
+      "content": [
+        "“The home therapy team helped me walk again. I trust JessyLife completely.”",
+        "“Recovery was smooth and professional — the clinic feels like a sanctuary.”"
+      ]
+    },
+    {
+      "name": "Contact",
+      "content": {
+        "address": "JessyLife Clinic, Achimota, Accra",
+        "phone": "0201300716",
+        "email": "hrmanagerjessylifeclinic@gmail.com",
+        "cta": ["Call Now", "WhatsApp"]
+      }
+    }
+  ],
+  "features": {
+    "responsive": true,
+    "mobile_first": true,
+    "smooth_scroll": true,
+    "sticky_nav": true,
+    "floating_whatsapp_button": true,
+    "scroll_animations": true,
+    "contact_form": true
+  },
+  "seo": {
+    "title": "JessyLife Physiotherapy & Rehabilitation Clinic – Accra, Ghana",
+    "description": "JessyLife Clinic in Accra provides expert physiotherapy, home-based rehab, occupational therapy, and more. Book licensed therapists today.",
+    "keywords": ["physiotherapy Accra", "rehab clinic Ghana", "home physiotherapy Accra"]
+  }
+}
