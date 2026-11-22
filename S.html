@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Executive Care // JessyLife</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400&family=JetBrains+Mono:wght@300&display=swap" rel="stylesheet">
+<style>
+html,body{margin:0;background:#0A0A0A}
+/* ===== EXECUTIVE CARE: styles (scoped to .ec and .ec2) ===== */
+.ec,.ecb,.ec-intro{--ground:#0A0A0A;--ink:#fff;--muted:#8B8B94;--teal:#0CA7A9;--teal-p:#087F81;--hair:rgba(255,255,255,.10);
+  --sans:'ITC Avant Garde Gothic','Avant Garde','Century Gothic','Jost',sans-serif;--mono:'JetBrains Mono',ui-monospace,monospace;
+  --gut:clamp(20px,5vw,64px);background:var(--ground);color:var(--ink);font-family:var(--sans);font-weight:300}
+.ec *,.ecb *{box-sizing:border-box;margin:0;border-radius:0}
+.ec{position:relative;display:flex;align-items:flex-end;min-height:100vh;min-height:100svh;overflow:hidden}
+.ec-canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ec-veil{position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(10,10,10,0) 20%,rgba(10,10,10,.94) 92%,#0A0A0A 100%),radial-gradient(ellipse at 50% 40%,rgba(10,10,10,0) 40%,rgba(10,10,10,.55) 100%)}
+.ec-in{position:relative;z-index:2;width:100%;max-width:calc(1152px + 2 * var(--gut));margin:0 auto;padding:120px var(--gut) calc(48px + env(safe-area-inset-bottom))}
+.ec-meta{display:flex;justify-content:space-between;gap:12px 20px;padding:14px 0;margin-bottom:36px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);font:300 11px/1.4 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.74)}
+.ec-meta span+span{padding-left:20px;border-left:1px solid rgba(255,255,255,.18)}
+.ec h1{font-weight:300}
+.ec-l1{display:block;margin-bottom:22px;font-size:clamp(1.4rem,3.2vw,2.6rem);line-height:1.1;letter-spacing:-.02em}
+.ec-l2{display:block;font-size:clamp(4.5rem,16vw,14rem);line-height:.82;letter-spacing:-.05em}
+.ec-line{display:block}
+.ec-w{display:inline-block;white-space:nowrap}
+.ec-g{display:inline-block;opacity:0;transform:translateY(.32em);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.1,1)}
+.ec.go .ec-g{opacity:1;transform:none}
+.ec-p{max-width:38ch;margin-top:32px;font-size:clamp(15px,1.1vw,16px);line-height:1.6;color:var(--muted)}
+.ec-btns{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.ec-btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 26px;border:1px solid rgba(255,255,255,.35);color:var(--ink);font:300 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;text-decoration:none;transition:border-color .2s ease,background .2s ease}
+.ec-btn:hover{border-color:#fff}
+.ec-btn.pri{background:var(--teal);border-color:var(--teal);color:var(--ground)}
+.ec-btn.pri:hover{background:#0eb9bb;border-color:#0eb9bb}
+.ec-btn.pri:active{background:var(--teal-p);border-color:var(--teal-p);color:#fff}
+.ec-btn:focus-visible{outline:2px solid #fff;outline-offset:3px}
+/* intro stage */
+.ec-intro{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;background:#0A0A0A;color:#fff;font-family:'ITC Avant Garde Gothic','Avant Garde','Century Gothic','Jost',sans-serif;visibility:visible;opacity:1;transition:opacity .6s ease,visibility 0s}
+.ec-intro.gone{opacity:0;visibility:hidden;pointer-events:none;transition:opacity .6s ease,visibility 0s .6s}
+.ec-intro p{margin:0;font-size:clamp(2.2rem,7vw,5rem);font-weight:300;letter-spacing:-.05em;text-transform:lowercase;opacity:0;transform:translateY(14px);transition:opacity .8s ease,transform .8s cubic-bezier(.16,1,.3,1)}
+.ec-intro.in p{opacity:1;transform:none}
+.ec-intro.out p{opacity:0;transform:translateY(-14px)}
+/* second part: bordered band (eyebrow + rule, headline left, lede right) */
+.ecb{position:relative;border-top:1px solid rgba(255,255,255,.06);padding:clamp(72px,10vw,128px) var(--gut)}
+.ecb-in{max-width:1152px;margin:0 auto}
+.ecb-eye{display:flex;align-items:center;gap:20px;font:300 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.74)}
+.ecb-eye::after{content:"";flex:1;height:1px;background:var(--hair)}
+.ecb-head{display:grid;grid-template-columns:1fr 1fr;align-items:end;gap:clamp(24px,5vw,80px);margin-top:clamp(32px,5vw,56px)}
+.ecb h2{max-width:20ch;font-size:clamp(2rem,4.6vw,3.6rem);font-weight:300;line-height:1.05;letter-spacing:-.04em}
+.ecb-lede{max-width:46ch;font-size:15px;line-height:1.7;color:#A1A1AA}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+@media (max-width:820px){.ecb-head{grid-template-columns:1fr}}
+@media (max-width:1100px){.ec-meta{display:grid;grid-template-columns:repeat(3,auto);justify-content:space-between}.ec-meta span+span{padding-left:0;border-left:0}}
+@media (max-width:560px){.ec-meta{grid-template-columns:1fr 1fr}.ec-btns{flex-direction:column}.ec-btn{width:100%}}
+@media (prefers-reduced-motion:reduce){.ec-intro{display:none}.ec-g,.rv{opacity:1!important;transform:none!important;transition:none!important}}
+
+/* ===== OCCUPATIONAL THERAPY band (scoped to .ot) ===== */
+.ot-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto 1fr;grid-template-areas:"h f" "l f";column-gap:clamp(24px,5vw,80px);margin-top:clamp(32px,5vw,56px)}
+.ot h2{grid-area:h;max-width:none;align-self:start}
+.ot-field{grid-area:f;position:relative;min-height:clamp(440px,52vw,680px);border:1px solid var(--hair);background:#0F0F11}
+.ot-field #ot-cards{position:absolute;inset:0}
+.ot-hint{position:absolute;left:16px;bottom:12px;z-index:3;pointer-events:none;font:300 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.74);mix-blend-mode:difference}
+.ot-list{grid-area:l;align-self:end;list-style:none;padding:0;margin-top:clamp(28px,4vw,48px);border-top:1px solid var(--hair)}
+.ot-list li{display:flex;align-items:baseline;gap:18px;padding:13px 0;border-bottom:1px solid var(--hair);font-size:15px;line-height:1.4}
+.ot-list .n{min-width:2ch;font:300 11px/1 var(--mono);letter-spacing:.1em;color:var(--teal)}
+@media (max-width:820px){.ot-grid{grid-template-columns:1fr;grid-template-rows:auto;grid-template-areas:"h" "f" "l"}.ot-field{min-height:420px;margin-top:32px}}
+/* ===== Gravity Cards component styles (from the package, unchanged) ===== */
+.gc { width: 100%; height: 100%; min-width: 0; min-height: 0; display: grid; grid-template-rows: minmax(0, 1fr); overflow: hidden; isolation: isolate; color: var(--gc-foreground, #20221f); font-family: Arial, Helvetica, sans-serif; }
+.gc__field { position: relative; min-width: 0; min-height: 0; overflow: hidden; contain: layout paint; }
+.gc__card { position: absolute; left: 0; top: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; width: var(--gc-card-width); height: var(--gc-card-height); box-sizing: border-box; margin: 0; padding: var(--gc-card-padding); overflow: hidden; border: 1px solid rgba(30, 32, 25, .14); border-radius: var(--gc-corners, 5px); color: var(--gc-text, #20221f); font-family: var(--gc-typeface, Arial, Helvetica, sans-serif); gap: 4px; background: var(--gc-card-color); box-shadow: 0 2px 2px rgba(32, 34, 31, .025), 0 7px 18px rgba(32, 34, 31, .07); cursor: grab; touch-action: none; text-align: left; -webkit-user-select: none; user-select: none; -webkit-tap-highlight-color: transparent; transform-origin: center; }
+.gc [hidden] { display: none; }
+.gc[data-touch="page"] .gc__card { touch-action: pan-y pinch-zoom; }
+.gc__card[data-dragging='true'] { cursor: grabbing; box-shadow: 0 14px 28px rgba(32, 34, 31, .16); }
+.gc__card:focus-visible { outline: 2px solid #fff; outline-offset: -4px; box-shadow: inset 0 0 0 6px #20221f; }
+.gc__card-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 100%; font-size: var(--gc-index-size); font-weight: 600; line-height: 1; letter-spacing: .015em; }
+.gc__card-mark { font-size: 1.35em; line-height: .75; font-weight: 400; }
+.gc__motif { align-self: center; display: block; width: var(--gc-motif-size); height: var(--gc-motif-size); min-height: 0; flex: 0 1 auto; overflow: visible; pointer-events: none; }
+.gc__title { display: block; width: 100%; min-height: 0; flex: 0 0 auto; overflow-wrap: anywhere; font-size: var(--gc-title-size); font-weight: 800; line-height: 1.05; letter-spacing: -.055em; }
+.gc__toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 9px 20px; padding: 15px 20px; background: var(--gc-toolbar-background); border-top: 1px solid currentColor; }
+.gc__hint { display: grid; margin: 0; font-size: 11px; line-height: 1.4; letter-spacing: .015em; }
+.gc__hint-state { grid-area: 1 / 1; visibility: hidden; }
+.gc__hint-state[aria-hidden="false"] { visibility: visible; }
+.gc__actions { display: flex; gap: 7px; }
+.gc__action { padding: 9px 13px; margin: 0; border: 1px solid var(--gc-foreground, #20221f); border-radius: 999px; color: var(--gc-foreground, #20221f); background: transparent; font: inherit; font-size: 11px; font-weight: 600; line-height: 1.1; white-space: nowrap; cursor: pointer; }
+.gc__action--release { background: var(--gc-foreground, #20221f); color: var(--gc-button-text, #fff); }
+.gc__action:focus-visible { outline: 2px solid var(--gc-foreground, #20221f); outline-offset: 3px; }
+.gc__action[disabled] { opacity: .4; cursor: default; }
+.gc__status { position: absolute; width: 1px; height: 1px; padding: 0; margin: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 520px) { .gc__toolbar { padding: 11px 12px; gap: 8px; } .gc__hint { flex: 1 1 100%; } .gc__actions { margin-left: auto; } }
+@media (max-height: 460px) { .gc__toolbar { padding-top: 8px; padding-bottom: 8px; } .gc__hint { flex: initial; } }
+@media (forced-colors: active) { .gc__card { border: 2px solid ButtonText; } .gc__action { border: 1px solid ButtonText; } }
+
+
+/* ===== DIET THERAPY band (scoped to .dt): nine-frame click-to-zoom hero ===== */
+.dt{padding-left:0;padding-right:0;padding-bottom:0}
+.dt .ecb-in{max-width:calc(1152px + 2 * var(--gut));padding:0 var(--gut)}
+.dt-stage{position:relative;width:100%;height:clamp(480px,56.25vw,860px);margin-top:clamp(32px,5vw,56px);overflow:hidden;isolation:isolate;background:#0A0A0A;cursor:zoom-in;-webkit-tap-highlight-color:transparent}
+.dt-stage:focus-visible{outline:2px solid #fff;outline-offset:-4px}
+.dt-layers img{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;object-position:50% 50%;transform-origin:54% 52%;opacity:0}
+.dt-layers img:first-child{opacity:1}
+.dt.run .dt-layers img{will-change:transform,opacity}
+.dt-veil{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(0deg,#0A0A0A 0%,rgba(10,10,10,.78) 22%,rgba(10,10,10,.3) 48%,rgba(10,10,10,0) 70%),linear-gradient(90deg,rgba(10,10,10,.5) 0%,rgba(10,10,10,0) 55%),linear-gradient(180deg,#0A0A0A 0%,rgba(10,10,10,0) 12%)}
+.dt-copy{position:absolute;left:0;right:0;bottom:0;z-index:3;max-width:calc(1152px + 2 * var(--gut));margin:0 auto;padding:0 var(--gut) calc(40px + env(safe-area-inset-bottom));pointer-events:none}
+.dt .dt-copy h2{max-width:none;font-size:clamp(4.5rem,16vw,14rem);font-weight:300;line-height:.82;letter-spacing:-.05em}
+.dt-line{display:block}
+.dt-copy p{max-width:38ch;margin-top:26px;font-size:clamp(15px,1.1vw,16px);line-height:1.6;color:rgba(255,255,255,.86)}
+.dt-hint{position:absolute;top:20px;right:var(--gut);z-index:3;display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid rgba(255,255,255,.28);background:rgba(10,10,10,.45);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font:300 11px/1 var(--mono);letter-spacing:.1em;text-transform:uppercase;color:#fff;pointer-events:none;transition:opacity .5s ease,border-color .3s ease}
+.dt-hint i{width:8px;height:8px;border-radius:50%;background:var(--teal);animation:dtp 1.8s ease-out infinite}
+.dt-stage:hover .dt-hint,.dt-stage:focus-visible .dt-hint{border-color:#fff}
+.dt.run .dt-hint{opacity:0}
+@keyframes dtp{0%{box-shadow:0 0 0 0 rgba(12,167,169,.65)}100%{box-shadow:0 0 0 10px rgba(12,167,169,0)}}
+.dt-status{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.dt.go .ec-g{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.dt-hint i{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- ===== EXECUTIVE CARE: markup (copy from here) ===== -->
+<div class="ec-intro" aria-hidden="true"><p>executive care</p></div>
+
+<section class="ec" id="executive-care" aria-labelledby="ec-title">
+  <canvas class="ec-canvas" aria-hidden="true"></canvas>
+  <div class="ec-veil"></div>
+  <div class="ec-in">
+    <div class="ec-meta"><span>Flexible scheduling</span><span>Privacy &amp; discretion</span><span>Expert-led care</span><span>Personal attention</span><span>Reduced waiting</span><span>Premium rehabilitation</span></div>
+    <h1 id="ec-title" aria-label="Executive Care. On your terms.">
+      <span class="ec-l1 ec-line" data-split>EXECUTIVE CARE</span>
+      <span class="ec-l2"><span class="ec-line" data-split>On your</span><span class="ec-line" data-split>terms.</span></span>
+    </h1>
+    <p class="ec-p">Experience personalised physiotherapy delivered by highly trained UK-qualified physiotherapists, with flexible scheduling and a discreet, attentive service.</p>
+    <div class="ec-btns">
+      <a class="ec-btn pri" href="https://forms.gle/mpMdBr9Dcttp3m3Q8" target="_blank" rel="noopener">Book Executive Care</a>
+      <a class="ec-btn" href="https://wa.me/233201300714?text=Hello%20JessyLife%2C%20I%20would%20like%20to%20enquire%20about%20Executive%20Care." target="_blank" rel="noopener">Message us on WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<section class="ecb" id="executive-care-message" aria-labelledby="ecb-title">
+  <div class="ecb-in">
+    <div class="ecb-eye rv">01 &middot; Executive Care</div>
+    <div class="ecb-head">
+      <h2 class="rv" id="ecb-title">We understand that your schedule is demanding and your privacy matters.</h2>
+      <p class="ecb-lede rv" style="transition-delay:.12s">Premium physiotherapy for individuals who value their time, privacy and the highest standards of clinical care.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ecb ot" id="occupational-therapy" aria-labelledby="ot-title">
+  <div class="ecb-in">
+    <div class="ecb-eye rv">02 &middot; Occupational Therapy</div>
+    <div class="ot-grid">
+      <h2 class="rv" id="ot-title">Regain your independence. Rebuild your confidence. Live more fully.</h2>
+      <div class="ot-field rv">
+        <div id="ot-cards" role="group" aria-label="Decorative cards. Drag to play."></div>
+        <p class="ot-hint" aria-hidden="true">Drag a card</p>
+      </div>
+      <ol class="ot-list">
+        <li class="rv" style="transition-delay:0.00s"><span class="n">01</span><span>Activities of Daily Living (ADL) Training</span></li>
+        <li class="rv" style="transition-delay:0.04s"><span class="n">02</span><span>Stroke and Neurological Rehabilitation</span></li>
+        <li class="rv" style="transition-delay:0.08s"><span class="n">03</span><span>Pediatric Occupational Therapy</span></li>
+        <li class="rv" style="transition-delay:0.12s"><span class="n">04</span><span>Fine Motor Skills Development</span></li>
+        <li class="rv" style="transition-delay:0.16s"><span class="n">05</span><span>Sensory Integration Therapy</span></li>
+        <li class="rv" style="transition-delay:0.20s"><span class="n">06</span><span>Cognitive and Perceptual Rehabilitation</span></li>
+        <li class="rv" style="transition-delay:0.24s"><span class="n">07</span><span>Hand and Upper Limb Rehabilitation</span></li>
+        <li class="rv" style="transition-delay:0.28s"><span class="n">08</span><span>Coordination and Balance Training</span></li>
+        <li class="rv" style="transition-delay:0.30s"><span class="n">09</span><span>Functional Independence Training</span></li>
+        <li class="rv" style="transition-delay:0.30s"><span class="n">10</span><span>Home and Workplace Adaptation Advice</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="ecb dt" id="diet-therapy" aria-labelledby="dt-title">
+  <div class="ecb-in"><div class="ecb-eye rv">03 &middot; Diet Therapy</div></div>
+  <div class="dt-stage" id="dt-stage" role="button" tabindex="0" aria-label="Diet Therapy. Floating islands of coffee beans, arugula, olive oil, Brazil nuts, raspberries and bitter melon. Activate to zoom in to the microscopic level.">
+    <div class="dt-layers" aria-hidden="true">
+      <img src="images/diet-therapy/frame-01.jpg" alt="" decoding="async" fetchpriority="high">
+      <img src="images/diet-therapy/frame-02.jpg" alt="" decoding="async">
+      <img src="images/diet-therapy/frame-03.jpg" alt="" decoding="async">
+      <img src="images/diet-therapy/frame-04.jpg" alt="" decoding="async">
+      <img src="images/diet-therapy/frame-05.jpg" alt="" decoding="async">
+      <img src="images/diet-therapy/frame-06.jpg" alt="" decoding="async">
+      <img src="images/diet-therapy/frame-07.jpg" alt="" decoding="async">
+      <img src="images/diet-therapy/frame-08.jpg" alt="" decoding="async">
+      <img src="images/diet-therapy/frame-09.jpg" alt="" decoding="async">
+    </div>
+    <div class="dt-veil"></div>
+    <div class="dt-copy">
+      <h2 id="dt-title" aria-label="Diet Therapy"><span class="dt-line" data-split>Diet</span><span class="dt-line" data-split>Therapy</span></h2>
+      <p>Nutritional guidance for optimal health</p>
+    </div>
+    <div class="dt-hint" aria-hidden="true"><i></i><span>Click to explore</span></div>
+    <p class="dt-status" role="status"></p>
+  </div>
+</section>
+
+
+<script>
+/* ===== EXECUTIVE CARE: script (copy with the markup) ===== */
+(function(){
+  var sec=document.getElementById('executive-care');if(!sec)return;
+  var cv=sec.querySelector('.ec-canvas'),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Headline: per-glyph rise, 42ms stagger, one continuous index */
+  var n=0;
+  sec.querySelectorAll('[data-split]').forEach(function(el){
+    var words=el.textContent.trim().split(/\s+/);el.textContent='';
+    words.forEach(function(w,wi){
+      var ws=document.createElement('span');ws.className='ec-w';
+      w.split('').forEach(function(ch){var g=document.createElement('span');g.className='ec-g';g.setAttribute('aria-hidden','true');g.textContent=ch;g.style.transitionDelay=(n++*42)+'ms';ws.appendChild(g)});
+      el.appendChild(ws);if(wi<words.length-1)el.appendChild(document.createTextNode(' '));
+    });
+  });
+  /* Intro stage hands off to the headline rise (2050ms), then the band reveals on scroll */
+  var intro=document.querySelector('.ec-intro');
+  if(reduce){if(intro)intro.remove();sec.classList.add('go')}
+  else{
+    setTimeout(function(){intro.classList.add('in')},220);
+    setTimeout(function(){intro.classList.add('out')},1500);
+    setTimeout(function(){intro.classList.add('gone');sec.classList.add('go')},2050);
+  }
+  var rv=[].slice.call(document.querySelectorAll('.rv'));
+  if(reduce||!('IntersectionObserver' in window)){rv.forEach(function(e){e.classList.add('in')})}
+  else{var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');o.unobserve(e.target)}})},{threshold:.16,rootMargin:'0px 0px -8% 0px'});rv.forEach(function(e){o.observe(e)})}
+
+  /* Shader ribbons: [r,g,b, centre y, amplitude, frequency, speed, phase, band width, intensity] */
+  var R=[[12,167,169,.62,.10,1.7,.35,0,.11,1],[45,212,191,.56,.12,1.2,-.28,2.1,.095,.9],[211,102,1,.68,.09,2.1,.22,4.2,.085,.55]];
+  var VS='attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+  var FS='precision highp float;uniform vec2 uRes;uniform float uT;'+
+  'float rib(vec2 p,float yc,float amp,float f,float sp,float ph,float w){'+
+  'float y=yc+amp*sin(p.x*f+uT*sp+ph)+amp*.45*sin(p.x*f*2.3-uT*sp*.6+ph*1.9);'+
+  'float b=smoothstep(w,0.,abs(p.y-y));return b*b;}'+
+  'void main(){vec2 p=gl_FragCoord.xy/uRes.y;vec2 q=gl_FragCoord.xy/uRes-.5;q.x*=uRes.x/uRes.y;'+
+  'float a=rib(p,.62,.10,1.7,.35,0.,.11);float b=rib(p,.56,.12,1.2,-.28,2.1,.095)*.9;float c=rib(p,.68,.09,2.1,.22,4.2,.085)*.55;'+
+  'vec3 col=vec3(.047,.655,.663)*a+vec3(.176,.831,.749)*b+vec3(.827,.4,.004)*c;'+
+  'col+=vec3(.6,.85,.9)*(a*b+b*c+a*c)*.6;col+=vec3(.047,.655,.663)*.10*exp(-dot(q,q)*3.);'+
+  'col=col/(1.+.4*col);gl_FragColor=vec4(col,clamp(max(col.r,max(col.g,col.b)),0.,1.));}';
+
+  var gl=null,ctx=null,uRes,uT,t0=performance.now(),vis=true,inView=true,running=false;
+  function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);return gl.getShaderParameter(o,gl.COMPILE_STATUS)?o:null}
+  function initGL(){
+    try{gl=cv.getContext('webgl',{antialias:false,alpha:true,premultipliedAlpha:true})}catch(e){gl=null}
+    if(!gl)return false;
+    var v=sh(gl.VERTEX_SHADER,VS),f=sh(gl.FRAGMENT_SHADER,FS),pr=gl.createProgram();
+    if(!v||!f)return false;
+    gl.attachShader(pr,v);gl.attachShader(pr,f);gl.linkProgram(pr);
+    if(!gl.getProgramParameter(pr,gl.LINK_STATUS))return false;
+    gl.useProgram(pr);
+    var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+    var l=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(l);gl.vertexAttribPointer(l,2,gl.FLOAT,false,0,0);
+    uRes=gl.getUniformLocation(pr,'uRes');uT=gl.getUniformLocation(pr,'uT');return true;
+  }
+  if(!initGL()){ /* a canvas that lost WebGL cannot switch to 2D, so swap in a fresh one */
+    var c2=document.createElement('canvas');c2.className=cv.className;c2.setAttribute('aria-hidden','true');cv.parentNode.replaceChild(c2,cv);cv=c2;gl=null;ctx=cv.getContext('2d');
+  }
+  function size(){var r=cv.getBoundingClientRect(),d=Math.min(window.devicePixelRatio||1,2);cv.width=Math.max(1,r.width*d|0);cv.height=Math.max(1,r.height*d|0);if(gl)gl.viewport(0,0,cv.width,cv.height);frame(reduce?3:(performance.now()-t0)/1000)}
+  function draw2d(t){
+    var W=cv.width,H=cv.height;ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='lighter';ctx.lineCap='round';ctx.lineJoin='round';
+    R.forEach(function(r){
+      [[2,.07],[1.3,.15],[.6,.32]].forEach(function(s){
+        ctx.beginPath();
+        for(var px=0;px<=W;px+=8){var u=px/H,y=r[3]+r[4]*Math.sin(u*r[5]+t*r[6]+r[7])+r[4]*.45*Math.sin(u*r[5]*2.3-t*r[6]*.6+r[7]*1.9);px?ctx.lineTo(px,H*(1-y)):ctx.moveTo(px,H*(1-y))}
+        ctx.lineWidth=r[8]*s[0]*H;ctx.strokeStyle='rgba('+r[0]+','+r[1]+','+r[2]+','+(s[1]*r[9])+')';ctx.stroke();
+      });
+    });
+  }
+  function frame(t){if(gl){gl.uniform2f(uRes,cv.width,cv.height);gl.uniform1f(uT,t);gl.drawArrays(gl.TRIANGLES,0,3)}else draw2d(t)}
+  function loop(){if(!vis||!inView){running=false;return}frame((performance.now()-t0)/1000);requestAnimationFrame(loop)}
+  function start(){if(!running&&!reduce){running=true;requestAnimationFrame(loop)}}
+  size();
+  if('ResizeObserver' in window)new ResizeObserver(size).observe(sec);else window.addEventListener('resize',size);
+  document.addEventListener('visibilitychange',function(){vis=!document.hidden;start()});
+  if('IntersectionObserver' in window)new IntersectionObserver(function(e){inView=e[0].isIntersecting;start()}).observe(sec);
+  start();
+})();
+</script>
+<script>
+/* ===== Gravity Cards runtime (package 0.1.0-prototype.2, inlined) ===== */
+(function(){
+var GCcfg=(function(){
+const clamp = (value, fallback, min, max) => {
+  const number = value == null || value === '' ? NaN : Number(value);
+  return Math.min(max, Math.max(min, Number.isFinite(number) ? number : fallback));
+};
+function freeze(value) {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) { Object.values(value).forEach(freeze); Object.freeze(value); }
+  return value;
+}
+const defaults = freeze({
+   cardCount: 6,
+  cardWidth: 220, cardHeight: 250, palette: 'pastel',
+  cardColors: ['#c9c7f5', '#d5ed95', '#ffc2a7', '#f7e99a', '#a7dce3', '#e5bdd4', '#c9c7f5', '#d5ed95'],
+     corners: 5,
+  gravity: .65, bounce: .55, autoReturn: true,  touchMode: 'interact',
+  strings: {
+    name: 'Gravity Cards', instructions: 'Drag or press Enter to release. Arrow keys move this card; Home restores the grid.',
+    hint: 'Drag a card. Let ideas collide.', returning: 'Everything finds its place.',
+    automatic: 'A little disorder. Returning after five seconds without input.', loose: 'Make space. Drag, throw, repeat.',
+    release: 'Release cards', restore: 'Restore grid', released: 'Cards released.', restoring: 'Restoring the grid.', restored: 'All cards are back in the grid.',
+  },
+});
+function normalize(input = {}) {
+  input = input && typeof input === 'object' ? input : {};
+  const number = (key, min, max) => clamp(input[key], defaults[key], min, max);
+  const color = (value, fallback) => typeof value === 'string' && /^#[\da-f]{6}$/i.test(value) ? value.toLowerCase() : fallback;
+  const choice = (key, values) => values.includes(input[key]) ? input[key] : defaults[key];
+  const autoReturn = typeof input.autoReturn === 'boolean' ? input.autoReturn : defaults.autoReturn;
+  return {
+    // Retain hidden slots so changing the visible count never discards authored content.
+
+    cardCount: Math.round(number('cardCount', 3, 8)),
+    cardWidth: number('cardWidth', 100, 360), cardHeight: number('cardHeight', 100, 400),
+    palette: choice('palette', ['pastel', 'vivid', 'mono', 'custom']),
+    cardColors: defaults.cardColors.map((value, index) => color(input.cardColors?.[index], value)),
+
+     corners: number('corners', 0, 24),
+    gravity: number('gravity', 0, 1), bounce: number('bounce', 0, 1), autoReturn,
+
+    touchMode: choice('touchMode', ['interact', 'page']),
+    strings: Object.fromEntries(Object.entries(defaults.strings).map(([key, fallback]) => [key, typeof input.strings?.[key] === 'string' && input.strings[key].trim() ? input.strings[key].slice(0, 300) : fallback])),
+  };
+}
+const range = (key, label, min, max, step, unit = '') => ({ key, label, type: 'range', min, max, step, unit, ...(['cardWidth', 'cardHeight', 'corners'].includes(key) ? { numberInput: true } : {}) });
+const select = (key, label, entries) => ({ key, label, type: 'select', options: entries.map(([value, label]) => ({ value, label })) });
+const editorGroups = [
+  { id: 'content', title: 'Cards', level: 'simple', fields: [
+    select('cardCount', 'Number of cards', [3,4,5,6,7,8].map(value => [value, `${value} cards`])),
+    { ...range('cardWidth', 'Card width', 100, 360, 1, 'px'), hint: 'Cards scale together when needed to fit the preview.' },
+    { ...range('cardHeight', 'Card height', 100, 400, 1, 'px'), hint: 'Changing the size restores the grid.' },
+    range('corners', 'Corner radius', 0, 24, 1, 'px'),
+
+  ] },
+  { id: 'appearance', title: 'Colors', level: 'simple', fields: [
+    { ...select('palette', 'Card palette', [['pastel', 'Pastel'], ['vivid', 'Vivid'], ['mono', 'Monochrome'], ['custom', 'Custom']]), editorCategory: 'colors' },
+    ...defaults.cardColors.map((_, index) => ({ key: `cardColors.${index}`, label: `Card ${index + 1} color`, type: 'color', visibleWhen: [{ key: 'palette', value: 'custom' }, { key: 'cardCount', operator: '>=', value: index + 1 }] })),
+
+  ] },
+  { id: 'motion', title: 'Motion', level: 'simple', fields: [
+    { ...range('gravity', 'Gravity', 0, 1, .01), hint: 'How strongly released cards fall. At 0, thrown cards float.' },
+    { ...range('bounce', 'Bounce', 0, 1, .01), hint: 'How much cards rebound after a throw or collision. Drag a card to try it.' },
+    { key: 'autoReturn', label: 'Return to grid automatically', type: 'toggle', hint: 'After five seconds without input. Turn off to leave cards loose.' },
+  ] },
+  { id: 'advanced', title: 'More controls', level: 'advanced', fields: [
+    { key: 'touchMode', label: 'On touch screens', type: 'segmented', options: [{ value: 'interact', label: 'Drag cards' }, { value: 'page', label: 'Scroll the page' }], hint: 'Choose what a swipe starting on a card does.' },
+    { key: 'strings.name', label: 'Name for screen readers', type: 'text', maxLength: 300, hint: 'Used when the host has no aria-label or aria-labelledby.' },
+  ] },
+];
+const configurationContract = freeze({
+  schemaVersion: 1, templateId: 'gravity-cards', title: 'Gravity Cards',
+  defaults, normalize, toRuntimeOptions: normalize, editorGroups: (editorGroups).map(group => ({ ...group, fields: group.fields.map(field =>
+    ["cardWidth","cardHeight","corners"].includes(field.key) ? { ...field, editorCategory: 'layout' } : field) })),
+  groups: [...editorGroups, { id: 'developer', title: 'Visitor strings', level: 'advanced', fields: Object.keys(defaults.strings).filter(key => key !== 'name').map(key => ({ key: `strings.${key}`, label: key, type: 'text', maxLength: 300 })) }],
+  presets: [
+    { id: 'playful', label: 'Falling', values: { gravity: .65, bounce: .55, palette: 'pastel' } },
+    { id: 'weightless', label: 'Weightless', values: { gravity: 0, bounce: .8, palette: 'vivid' } },
+  ],
+  actions: [
+    { id: 'release', label: 'Release cards', description: 'Break the grid into a field of colliding cards.' },
+    { id: 'reconstruct', label: 'Restore grid', description: 'Bring every card back to its original grid position.' },
+  ],
+});
+
+return {normalize:normalize};
+})();
+var normalize=GCcfg.normalize;
+
+const mounted = new WeakMap();
+const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+const cross = (ax, ay, bx, by) => ax * by - ay * bx;
+const palettes = {
+  pastel: ['#c9c7f5', '#d5ed95', '#ffc2a7', '#f7e99a', '#a7dce3', '#e5bdd4'],
+  vivid: ['#b6a1ff', '#c1ed51', '#ff9a71', '#ffdf4d', '#73c8e8', '#ef9ac7'],
+  mono: ['#e8e6de', '#d1d2c9', '#f4f1e8', '#ddded6', '#c2c4bb', '#eeece4'],
+};
+
+/** Independently colliding typographic cards. The host supplies its dimensions. */
+function mountGravityCards(host, input = {}) {
+  if (!host?.ownerDocument || host.nodeType !== 1) throw new TypeError('A Gravity Cards host element is required.');
+  mounted.get(host)?.destroy();
+  const doc = host.ownerDocument, win = doc.defaultView, original = [...host.childNodes];
+  const create = (tag, className) => { const node = doc.createElement(tag); node.className = className; return node; };
+  const stage = create('section', 'gc'); stage.setAttribute('aria-label', 'Gravity Cards');
+  const field = create('div', 'gc__field');
+  const status = create('p', 'gc__status'); status.setAttribute('role', 'status');
+  stage.append(field, status); host.replaceChildren(stage);
+  const namespace = 'http://www.w3.org/2000/svg';
+  function motif(index) {
+    index %= 6;
+    const svg = doc.createElementNS(namespace, 'svg');
+    svg.setAttribute('class', 'gc__motif'); svg.setAttribute('viewBox', '0 0 100 100'); svg.setAttribute('aria-hidden', 'true');
+    const add = (tag, attrs) => { const node = doc.createElementNS(namespace, tag); Object.entries(attrs).forEach(([name, value]) => node.setAttribute(name, value)); svg.append(node); };
+    const line = { fill: 'none', stroke: 'currentColor', 'stroke-width': '9', 'stroke-linecap': 'square' };
+    if (index === 0) add('path', { ...line, d: 'M50 9V91M9 50H91M21 21L79 79M21 79L79 21' });
+    if (index === 1) for (const radius of [37, 24, 11]) add('circle', { ...line, 'stroke-width': '6', cx: '50', cy: '50', r: String(radius) });
+    if (index === 2) add('path', { ...line, 'stroke-width': '6', d: 'M50 9L91 50L50 91L9 50ZM50 28L72 50L50 72L28 50Z' });
+    if (index === 3) for (let row = 0; row < 3; row++) for (let col = 0; col < 3; col++) if ((row + col) % 2 === 0) add('rect', { x: String(14 + col * 24), y: String(14 + row * 24), width: '24', height: '24', fill: 'currentColor' });
+    if (index === 4) add('path', { d: 'M58 5L17 56H43L34 95L85 39H58Z', fill: 'currentColor' });
+    if (index === 5) {
+      add('ellipse', { ...line, 'stroke-width': '6', cx: '50', cy: '50', rx: '42', ry: '18', transform: 'rotate(-42 50 50)' });
+      add('ellipse', { ...line, 'stroke-width': '6', cx: '50', cy: '50', rx: '42', ry: '18', transform: 'rotate(42 50 50)' });
+      add('circle', { cx: '50', cy: '50', r: '7', fill: 'currentColor' });
+    }
+    return svg;
+  }
+  const allBodies = Array.from({ length: 8 }, (_, index) => {
+    const node = create('button', 'gc__card'); node.type = 'button'; node.dataset.index = String(index);
+    const symbol = motif(index);
+    node.append(symbol); field.append(node);
+    return { index, node, symbol, x: 0, y: 0, angle: 0, vx: 0, vy: 0, angularVelocity: 0, homeX: 0, homeY: 0 };
+  });
+
+  let bodies = [];
+  let options = normalize(input), disposed = false, visible = true, mode = 'grid';
+  let width = 0, height = 0, cardWidth = 0, cardHeight = 0, fit = 1, columns = 3;
+  let frame = 0, previousTime = 0, frameCount = 0, collisionCount = 0, returnTimer = 0, quietTime = 0;
+  let activePointer = null, dragged = null, dragX = 0, dragY = 0, grabX = 0, grabY = 0;
+  let selected = -1, suppressClick = false, burstCount = 0, returningTime = 0;
+  let sleepSampleTime = 0, sleepPositions = null;
+  const reduced = win.matchMedia('(prefers-reduced-motion: reduce)');
+  const events = new win.AbortController();
+  const listen = (target, type, callback) => target.addEventListener(type, callback, { signal: events.signal });
+  function stop() { win.cancelAnimationFrame(frame); frame = 0; previousTime = 0; }
+  function clearReturn() { win.clearTimeout(returnTimer); returnTimer = 0; }
+  function scheduleReturn() {
+    clearReturn();
+    if (!disposed && options.autoReturn && mode === 'physics' && activePointer === null && visible && !doc.hidden) returnTimer = win.setTimeout(() => { returnTimer = 0; reconstruct(); }, 5000);
+  }
+  function setMode(next) {
+    mode = next; stage.dataset.mode = next;
+  }
+  function paint() {
+    for (const body of bodies) {
+      body.node.style.transform = `translate3d(${body.x - cardWidth / 2}px,${body.y - cardHeight / 2}px,0) rotate(${body.angle}rad)`;
+      body.node.style.zIndex = String(body === dragged ? 20 : body.index === selected ? 10 : body.index + 1);
+    }
+  }
+  function zero(body) { body.vx = 0; body.vy = 0; body.angularVelocity = 0; }
+  function exactGrid() {
+    stop(); clearReturn();
+    for (const body of bodies) { body.x = body.homeX; body.y = body.homeY; body.angle = 0; zero(body); }
+    setMode('grid'); quietTime = 0; sleepSampleTime = 0; sleepPositions = null; paint();
+  }
+  function endDrag(cancelled = false) {
+    const id = activePointer, body = dragged;
+    activePointer = null; dragged = null;
+    if (body) {
+      delete body.node.dataset.dragging;
+      if (cancelled) zero(body);
+      else body.angularVelocity = clamp(cross(grabX, grabY, body.vx, body.vy) * inertia() * .45, -7, 7);
+      if (id !== null && body.node.hasPointerCapture?.(id)) body.node.releasePointerCapture(id);
+    }
+    scheduleReturn();
+  }
+  function wake() {
+    if (!disposed && !frame && mode !== 'grid' && visible && !doc.hidden && !reduced.matches && width > 0 && height > 0) frame = win.requestAnimationFrame(animate);
+  }
+  function inertia() { return 12 / Math.max(1, cardWidth * cardWidth + cardHeight * cardHeight); }
+  function corners(body) {
+    const c = Math.cos(body.angle), s = Math.sin(body.angle), hw = cardWidth / 2, hh = cardHeight / 2;
+    return [[-hw, -hh], [hw, -hh], [hw, hh], [-hw, hh]].map(([x, y]) => ({ x: body.x + c * x - s * y, y: body.y + s * x + c * y }));
+  }
+  function bounds(body) {
+    const c = Math.abs(Math.cos(body.angle)), s = Math.abs(Math.sin(body.angle));
+    return { x: c * cardWidth / 2 + s * cardHeight / 2, y: s * cardWidth / 2 + c * cardHeight / 2 };
+  }
+  function contain(body) {
+    const extent = bounds(body);
+    body.x = clamp(body.x, extent.x + 3, Math.max(extent.x + 3, width - extent.x - 3));
+    body.y = clamp(body.y, extent.y + 3, Math.max(extent.y + 3, height - extent.y - 3));
+  }
+  function contact(a, b) {
+    const ca = Math.cos(a.angle), sa = Math.sin(a.angle), cb = Math.cos(b.angle), sb = Math.sin(b.angle);
+    const axes = [[ca, sa], [-sa, ca], [cb, sb], [-sb, cb]];
+    let depth = Infinity, nx = 0, ny = 0;
+    for (const [ax, ay] of axes) {
+      const ra = Math.abs(ax * ca + ay * sa) * cardWidth / 2 + Math.abs(-ax * sa + ay * ca) * cardHeight / 2;
+      const rb = Math.abs(ax * cb + ay * sb) * cardWidth / 2 + Math.abs(-ax * sb + ay * cb) * cardHeight / 2;
+      const distance = (b.x - a.x) * ax + (b.y - a.y) * ay;
+      const overlap = ra + rb - Math.abs(distance);
+      if (overlap <= 0) return null;
+      if (overlap < depth) { depth = overlap; const sign = distance < 0 ? -1 : 1; nx = ax * sign; ny = ay * sign; }
+    }
+    const av = corners(a), bv = corners(b);
+    const support = (points, sign) => {
+      const farthest = Math.max(...points.map(point => (point.x * nx + point.y * ny) * sign));
+      const edge = points.filter(point => farthest - (point.x * nx + point.y * ny) * sign < .6);
+      return { x: edge.reduce((sum, point) => sum + point.x, 0) / edge.length, y: edge.reduce((sum, point) => sum + point.y, 0) / edge.length };
+    };
+    const p = support(av, 1), q = support(bv, -1);
+    return { nx, ny, depth, x: (p.x + q.x) / 2, y: (p.y + q.y) / 2 };
+  }
+  function impulse(body, ix, iy, rx, ry, inverseMass, inverseInertia) {
+    body.vx += ix * inverseMass; body.vy += iy * inverseMass;
+    body.angularVelocity += cross(rx, ry, ix, iy) * inverseInertia;
+  }
+  function collide(a, b, hit, count) {
+    const ma = a === dragged ? 0 : 1, mb = b === dragged ? 0 : 1;
+    const ia = ma * inertia(), ib = mb * inertia(), total = ma + mb;
+    if (!total) return;
+    const { nx, ny } = hit;
+    const correction = Math.max(0, hit.depth - .25) * .72 / total;
+    a.x -= nx * correction * ma; a.y -= ny * correction * ma;
+    b.x += nx * correction * mb; b.y += ny * correction * mb;
+    const rax = hit.x - a.x, ray = hit.y - a.y, rbx = hit.x - b.x, rby = hit.y - b.y;
+    const rvx = b.vx - b.angularVelocity * rby - a.vx + a.angularVelocity * ray;
+    const rvy = b.vy + b.angularVelocity * rbx - a.vy - a.angularVelocity * rax;
+    const speed = rvx * nx + rvy * ny;
+    if (speed >= 0) return;
+    const restitution = speed < -65 * fit ? .08 + options.bounce * .76 : 0;
+    const denominator = total + cross(rax, ray, nx, ny) ** 2 * ia + cross(rbx, rby, nx, ny) ** 2 * ib;
+    const amount = -(1 + restitution) * speed / denominator;
+    impulse(a, -amount * nx, -amount * ny, rax, ray, ma, ia);
+    impulse(b, amount * nx, amount * ny, rbx, rby, mb, ib);
+    const tx = -ny, ty = nx;
+    const frictionDenominator = total + cross(rax, ray, tx, ty) ** 2 * ia + cross(rbx, rby, tx, ty) ** 2 * ib;
+    const friction = clamp(-(rvx * tx + rvy * ty) / frictionDenominator, -amount * .48, amount * .48);
+    impulse(a, -friction * tx, -friction * ty, rax, ray, ma, ia);
+    impulse(b, friction * tx, friction * ty, rbx, rby, mb, ib);
+    if (count && speed < -12 * fit) collisionCount++;
+  }
+  function wall(body, nx, ny, depth, px, py) {
+    if (depth <= 0 || body === dragged) return;
+    body.x += nx * depth; body.y += ny * depth;
+    const rx = px - body.x, ry = py - body.y, inv = inertia();
+    const vx = body.vx - body.angularVelocity * ry, vy = body.vy + body.angularVelocity * rx;
+    const speed = vx * nx + vy * ny;
+    if (speed >= 0) return;
+    const restitution = speed < -75 * fit ? .08 + options.bounce * .68 : 0;
+    const amount = -(1 + restitution) * speed / (1 + cross(rx, ry, nx, ny) ** 2 * inv);
+    impulse(body, amount * nx, amount * ny, rx, ry, 1, inv);
+    const tx = -ny, ty = nx;
+    const friction = clamp(-(vx * tx + vy * ty) / (1 + cross(rx, ry, tx, ty) ** 2 * inv), -amount * .65, amount * .65);
+    impulse(body, friction * tx, friction * ty, rx, ry, 1, inv);
+  }
+  function walls(body) {
+    const points = corners(body);
+    const edge = (axis, sign) => {
+      const extreme = Math.max(...points.map(point => point[axis] * sign));
+      const selected = points.filter(point => extreme - point[axis] * sign < .6);
+      return { x: selected.reduce((sum, point) => sum + point.x, 0) / selected.length, y: selected.reduce((sum, point) => sum + point.y, 0) / selected.length };
+    };
+    const left = edge('x', -1), right = edge('x', 1), top = edge('y', -1), bottom = edge('y', 1);
+    wall(body, 1, 0, 3 - left.x, left.x, left.y);
+    wall(body, -1, 0, right.x - width + 3, right.x, right.y);
+    wall(body, 0, 1, 3 - top.y, top.x, top.y);
+    wall(body, 0, -1, bottom.y - height + 3, bottom.x, bottom.y);
+  }
+  function physicsStep(dt) {
+    const drag = Math.exp(-.62 * dt), angularDrag = Math.exp(-1.3 * dt);
+    for (const body of bodies) {
+      if (body === dragged) {
+        const beforeX = body.x, beforeY = body.y;
+        const c = Math.cos(body.angle), s = Math.sin(body.angle);
+        const targetX = dragX - c * grabX + s * grabY, targetY = dragY - s * grabX - c * grabY;
+        const follow = 1 - Math.exp(-45 * dt);
+        body.x += clamp((targetX - body.x) * follow, -2100 * fit * dt, 2100 * fit * dt);
+        body.y += clamp((targetY - body.y) * follow, -2100 * fit * dt, 2100 * fit * dt);
+        contain(body); body.vx = (body.x - beforeX) / dt; body.vy = (body.y - beforeY) / dt; body.angularVelocity = 0;
+        continue;
+      }
+      body.vy += options.gravity * 1500 * fit * dt;
+      body.vx *= drag; body.vy *= drag; body.angularVelocity *= angularDrag;
+      body.x += body.vx * dt; body.y += body.vy * dt; body.angle += body.angularVelocity * dt;
+    }
+    // Oriented rectangle SAT with contact angular impulses, followed by positional
+    // correction. Six bodies keep this solver bounded (15 pairs per iteration).
+    for (let iteration = 0; iteration < 7; iteration++) {
+      for (let a = 0; a < bodies.length; a++) for (let b = a + 1; b < bodies.length; b++) {
+        const hit = contact(bodies[a], bodies[b]);
+        if (hit) collide(bodies[a], bodies[b], hit, iteration === 0);
+      }
+      bodies.forEach(walls);
+    }
+    for (const body of bodies) {
+      body.vx = clamp(body.vx, -2500 * fit, 2500 * fit); body.vy = clamp(body.vy, -2500 * fit, 2500 * fit);
+      body.angularVelocity = clamp(body.angularVelocity, -12, 12); contain(body);
+    }
+  }
+  function returnStep(dt) {
+    for (const body of bodies) {
+      const stiffness = 125, damping = 23;
+      body.vx += ((body.homeX - body.x) * stiffness - damping * body.vx) * dt;
+      body.vy += ((body.homeY - body.y) * stiffness - damping * body.vy) * dt;
+      body.angularVelocity += (-body.angle * stiffness - damping * body.angularVelocity) * dt;
+      body.x += body.vx * dt; body.y += body.vy * dt; body.angle += body.angularVelocity * dt; contain(body);
+    }
+  }
+  function animate(time) {
+    frame = 0;
+    if (disposed || !visible || doc.hidden || reduced.matches || mode === 'grid') return;
+    const elapsed = previousTime ? clamp((time - previousTime) / 1000, 0, .05) : 1 / 60;
+    previousTime = time; frameCount++;
+    const steps = Math.max(1, Math.ceil(elapsed * 120)), dt = elapsed / steps;
+    for (let step = 0; step < steps; step++) { if (mode === 'returning') returnStep(dt); else physicsStep(dt); }
+    if (mode === 'returning') {
+      returningTime += elapsed;
+      const home = bodies.every(body => Math.hypot(body.x - body.homeX, body.y - body.homeY) < .05 && Math.abs(body.angle) < .001 && Math.hypot(body.vx, body.vy) < .3);
+      if (home || returningTime > 2.5) { exactGrid(); status.textContent = options.strings.restored; return; }
+    } else if (activePointer === null) {
+      // Gravity creates residual contact impulses even after visible motion stops.
+      // Measure sustained pose stability to sleep the island without mistaking
+      // those impulses for motion, then wake on input or a physics option change.
+      sleepSampleTime += elapsed;
+      if (sleepSampleTime >= .16) {
+        const quiet = sleepPositions && bodies.every((body, index) => Math.hypot(body.x - sleepPositions[index].x, body.y - sleepPositions[index].y) < Math.max(.8, 2 * fit) && Math.abs(body.angle - sleepPositions[index].angle) < .02);
+        quietTime = quiet ? quietTime + sleepSampleTime : 0;
+        sleepPositions = bodies.map(({ x, y, angle }) => ({ x, y, angle })); sleepSampleTime = 0;
+      }
+      if (quietTime > .8) { bodies.forEach(zero); paint(); stop(); return; }
+    }
+    paint(); wake();
+  }
+  function staticScatter() {
+    for (const body of bodies) {
+      body.x = body.homeX + (body.index % 2 ? 1 : -1) * cardWidth * .13;
+      body.y = body.homeY + (body.index % 3 - 1) * cardHeight * .11;
+      body.angle = (body.index % 2 ? 1 : -1) * (.1 + body.index * .02); zero(body); contain(body);
+    }
+    stop(); paint();
+  }
+  function release() {
+    if (disposed || !width || !height) return;
+    endDrag(true); clearReturn(); setMode('physics'); quietTime = 0; sleepPositions = null; burstCount++;
+    if (reduced.matches) staticScatter();
+    else {
+      for (const body of bodies) {
+        const direction = body.index % 2 ? 1 : -1;
+        body.vx = direction * (190 + body.index * 33) * fit;
+        body.vy = -(200 + body.index % 3 * 80) * fit;
+        body.angularVelocity = direction * (1.7 + body.index * .25);
+      }
+      wake();
+    }
+    status.textContent = `${options.strings.released} ${options.strings.instructions}`; scheduleReturn();
+  }
+  function reconstruct() {
+    if (disposed) return;
+    endDrag(true); clearReturn(); returningTime = 0;
+    if (mode === 'grid' || reduced.matches || !visible || doc.hidden) { exactGrid(); return; }
+    for (const body of bodies) {
+      body.angle = ((body.angle + Math.PI) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2) - Math.PI;
+      zero(body);
+    }
+    setMode('returning'); status.textContent = options.strings.restoring; wake();
+  }
+  function resize(force = false) {
+    if (disposed) return;
+    const nextWidth = field.clientWidth, nextHeight = field.clientHeight;
+    if (!force && width === nextWidth && height === nextHeight) return;
+    width = nextWidth; height = nextHeight; endDrag(true);
+    const gap = Math.min(18, width * .023, height * .035), padding = Math.min(30, width * .06, height * .07);
+    let best = -1;
+    for (const count of [...new Set([3, 2, 4, 1, options.cardCount])].filter(count => count <= options.cardCount)) {
+      const rows = Math.ceil(bodies.length / count);
+      const candidate = Math.min(1, (width - padding * 2 - gap * (count - 1)) / (count * options.cardWidth), (height - padding * 2 - gap * (rows - 1)) / (rows * options.cardHeight));
+      if (candidate > best + .01) { best = candidate; columns = count; }
+    }
+    fit = Math.max(.01, Math.min(best, (Math.min(width, height) - 14) / Math.hypot(options.cardWidth, options.cardHeight)));
+    cardWidth = options.cardWidth * fit; cardHeight = options.cardHeight * fit;
+    const rows = Math.ceil(bodies.length / columns), totalWidth = columns * cardWidth + (columns - 1) * gap, totalHeight = rows * cardHeight + (rows - 1) * gap;
+    field.style.setProperty('--gc-card-width', `${cardWidth}px`); field.style.setProperty('--gc-card-height', `${cardHeight}px`);
+    field.style.setProperty('--gc-card-padding', `${Math.max(4, Math.min(cardWidth, cardHeight) * .08)}px`);
+    field.style.setProperty('--gc-index-size', `${Math.max(6, Math.min(cardWidth * .055, cardHeight * .05))}px`);
+    field.style.setProperty('--gc-motif-size', `${Math.min(cardWidth * .46, cardHeight * .38)}px`);
+    for (const body of bodies) {
+      body.homeX = (width - totalWidth) / 2 + cardWidth / 2 + body.index % columns * (cardWidth + gap);
+      body.homeY = (height - totalHeight) / 2 + cardHeight / 2 + Math.floor(body.index / columns) * (cardHeight + gap);
+    }
+    exactGrid();
+  }
+
+  function present() {
+    stage.style.setProperty('--gc-foreground', '#000000');
+    stage.style.setProperty('--gc-corners', `${options.corners}px`);
+    stage.dataset.touch = options.touchMode;
+    if (host.hasAttribute('aria-label') || host.hasAttribute('aria-labelledby')) stage.removeAttribute('aria-label');
+    else stage.setAttribute('aria-label', options.strings.name);
+    bodies.forEach(body => {
+      body.node.setAttribute('aria-label', `Card ${body.index + 1}. ${options.strings.instructions}`);
+      body.node.style.setProperty('--gc-card-color', options.palette === 'custom' ? options.cardColors[body.index] : palettes[options.palette][body.index % 6]);
+    });
+    setMode(mode);
+  }
+  function syncCount() {
+    endDrag(true);
+    const focused = allBodies.find(body => body.node === doc.activeElement);
+    bodies = allBodies.slice(0, options.cardCount);
+    allBodies.forEach(body => { body.node.hidden = body.index >= options.cardCount; });
+    if (selected >= options.cardCount) selected = -1;
+    if (focused?.node.hidden) bodies.at(-1).node.focus({ preventScroll: true });
+  }
+  function point(event) {
+    const rect = field.getBoundingClientRect();
+    return { x: (event.clientX - rect.left) * width / rect.width, y: (event.clientY - rect.top) * height / rect.height };
+  }
+  for (const body of allBodies) {
+    listen(body.node, 'pointerdown', event => {
+      if (!event.isPrimary || event.button !== 0 || activePointer !== null || (event.pointerType === 'touch' && options.touchMode === 'page')) return;
+      clearReturn(); stop(); setMode('physics'); quietTime = 0; selected = body.index;
+      const p = point(event), dx = p.x - body.x, dy = p.y - body.y, c = Math.cos(body.angle), s = Math.sin(body.angle);
+      grabX = dx * c + dy * s; grabY = -dx * s + dy * c; dragX = p.x; dragY = p.y;
+      activePointer = event.pointerId; dragged = body; suppressClick = true; zero(body);
+      body.node.dataset.dragging = 'true'; body.node.setPointerCapture(event.pointerId); body.node.focus({ preventScroll: true }); paint(); wake();
+    });
+    listen(body.node, 'pointermove', event => {
+      if (event.pointerId !== activePointer || dragged !== body) return;
+      const p = point(event); dragX = p.x; dragY = p.y;
+      if (reduced.matches) {
+        const c = Math.cos(body.angle), s = Math.sin(body.angle);
+        body.x = dragX - c * grabX + s * grabY; body.y = dragY - s * grabX - c * grabY; contain(body); paint();
+      } else wake();
+    });
+    for (const type of ['pointerup', 'pointercancel', 'lostpointercapture']) listen(body.node, type, event => {
+      if (event.pointerId === activePointer && dragged === body) { endDrag(type !== 'pointerup'); paint(); wake(); }
+    });
+    listen(body.node, 'click', event => { if (suppressClick && event.detail) { suppressClick = false; return; } release(); });
+    listen(body.node, 'keydown', event => {
+      if (event.key === 'Home' || event.key === 'Escape') { event.preventDefault(); reconstruct(); return; }
+      const direction = { ArrowLeft: [-1, 0], ArrowRight: [1, 0], ArrowUp: [0, -1], ArrowDown: [0, 1] }[event.key];
+      if (!direction) return;
+      event.preventDefault(); endDrag(true); selected = body.index; setMode('physics'); quietTime = 0;
+      const distance = (event.shiftKey ? 65 : 26) * fit;
+      body.x += direction[0] * distance; body.y += direction[1] * distance;
+      if (!reduced.matches) { body.vx += direction[0] * 130 * fit; body.vy += direction[1] * 130 * fit; }
+      contain(body); paint(); wake(); scheduleReturn();
+    });
+  }
+  function suspend() { endDrag(true); clearReturn(); stop(); }
+  listen(doc, 'visibilitychange', () => { if (doc.hidden) suspend(); else { wake(); scheduleReturn(); } });
+  listen(reduced, 'change', () => { suspend(); if (mode === 'returning') exactGrid(); else if (mode === 'physics') { if (reduced.matches) bodies.forEach(zero); else wake(); scheduleReturn(); } paint(); });
+  const intersection = new win.IntersectionObserver(entries => {
+    visible = entries[0]?.isIntersecting ?? true;
+    if (!visible) suspend(); else { wake(); scheduleReturn(); }
+  }); intersection.observe(stage);
+  const resizeObserver = new win.ResizeObserver(() => resize()); resizeObserver.observe(field);
+  function getState() {
+    return { ...structuredClone(options), ready: !disposed, mounted: !disposed, mode, width, height,
+      renderedCardWidth: cardWidth, renderedCardHeight: cardHeight, columns,
+      reducedMotion: reduced.matches, visible, animating: Boolean(frame), frameCount, collisionCount, burstCount,
+      dragging: dragged?.index ?? -1, selected, autoReturnPending: Boolean(returnTimer),
+      bodies: bodies.map(({ index, x, y, angle, vx, vy, angularVelocity, homeX, homeY }) => ({ index, x, y, angle, vx, vy, angularVelocity, homeX, homeY })),
+    };
+  }
+  function update(value = {}) {
+    if (disposed) return Promise.resolve(getState());
+    const previous = options; options = normalize({ ...options, ...value, strings: { ...options.strings, ...value?.strings } });
+    const countChanged = previous.cardCount !== options.cardCount;
+    if (countChanged) syncCount();
+    if (previous.touchMode !== options.touchMode) endDrag(true);
+    present();
+    if (countChanged || previous.cardWidth !== options.cardWidth || previous.cardHeight !== options.cardHeight) resize(true);
+    if (previous.gravity !== options.gravity || previous.bounce !== options.bounce) { quietTime = 0; wake(); }
+    scheduleReturn(); return Promise.resolve(getState());
+  }
+  const controller = {
+    get ready() { return Promise.resolve(getState()); }, update, release, burst: release, reconstruct, reset: reconstruct, getState,
+    destroy() {
+      if (disposed) return;
+      disposed = true; suspend(); events.abort(); resizeObserver.disconnect(); intersection.disconnect();
+      host.replaceChildren(...original); mounted.delete(host);
+    },
+  };
+  mounted.set(host, controller); syncCount(); present(); resize(true); return controller;
+}
+
+window.mountGravityCards=mountGravityCards;
+})();
+</script>
+<script>
+(function(){
+  var host=document.getElementById('ot-cards');
+  if(!host||!window.mountGravityCards)return;
+  try{window.mountGravityCards(host,{"cardCount": 6, "cardWidth": 220, "cardHeight": 250, "palette": "pastel", "cardColors": ["#c9c7f5", "#d5ed95", "#ffc2a7", "#f7e99a", "#a7dce3", "#e5bdd4", "#c9c7f5", "#d5ed95"], "corners": 5, "gravity": 0.65, "bounce": 0.55, "autoReturn": true, "touchMode": "interact"})}catch(e){console.error(e)}
+})();
+</script>
+<script>
+/* ===== DIET THERAPY: nine-frame click-to-zoom (vanilla JS, no video) ===== */
+(function(){
+  var sec=document.getElementById('diet-therapy');if(!sec)return;
+  var stage=document.getElementById('dt-stage'),imgs=[].slice.call(stage.querySelectorAll('.dt-layers img')),status=sec.querySelector('.dt-status');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* Heading: same per-glyph rise as the hero (42ms stagger), starts when the section scrolls into view */
+  var n=0;
+  sec.querySelectorAll('[data-split]').forEach(function(el){
+    var word=el.textContent.trim();el.textContent='';
+    var ws=document.createElement('span');ws.className='ec-w';
+    word.split('').forEach(function(ch){var g=document.createElement('span');g.className='ec-g';g.setAttribute('aria-hidden','true');g.textContent=ch;g.style.transitionDelay=(n++*42)+'ms';ws.appendChild(g)});
+    el.appendChild(ws);
+  });
+  if('IntersectionObserver' in window&&!reduce){var io=new IntersectionObserver(function(e){if(e[0].isIntersecting){setTimeout(function(){sec.classList.add('go')},150);io.disconnect()}},{threshold:.25});io.observe(stage)}
+  else sec.classList.add('go');
+
+  /* Timeline: 3000ms across eight transitions, later macro frames get slightly longer */
+  var T=3000,W=[1,1,1,1,1.1,1.25,1.4,1.55],sum=W.reduce(function(a,b){return a+b},0),seg=[],st=[],acc=0;
+  W.forEach(function(w){var d=T*w/sum;st.push(acc);seg.push(d);acc+=d});
+  var RATE=.14,SETTLE=1100,state='idle',t0=0;     /* RATE = continuous push-in, scale per second */
+  function clamp01(x){return x<0?0:x>1?1:x}
+  function smooth(p){return p*p*(3-2*p)}
+  function apply(t){
+    imgs.forEach(function(im,i){
+      var enter=i===0?0:st[i-1],op,blur=0;
+      if(i>0&&t<enter){im.style.opacity=0;return}
+      if(i<8&&t>=st[i]+seg[i]){im.style.opacity=0;return}   /* covered by the next frame */
+      if(i===0)op=1;else{var p=clamp01((t-enter)/seg[i-1]);op=smooth(p);blur=(1-smooth(p))*4}
+      var tl=Math.max(0,t-enter)/1000,s=1+RATE*tl;
+      if(i===8&&t>T){var u=(t-T)/1000;s=1+RATE*((T-enter)/1000)+RATE*.3*(1-Math.exp(-u/.3))}   /* eased settle, no abrupt stop */
+      im.style.opacity=op;
+      im.style.transform='scale('+s.toFixed(4)+')';
+      im.style.filter=blur>.05?'blur('+blur.toFixed(2)+'px)':'none';
+    });
+  }
+  function finish(){
+    imgs.forEach(function(im,i){im.style.opacity=i===8?1:0;im.style.filter='none';im.style.transform=i===8?'scale('+(1+RATE*((T-st[7])/1000)+RATE*.3).toFixed(4)+')':'none'});
+    state='done';sec.classList.remove('run');sec.classList.add('done');
+    stage.removeAttribute('role');stage.removeAttribute('tabindex');stage.style.cursor='default';
+    stage.setAttribute('aria-label','Diet Therapy. Microscopic view of the bitter melon surface.');
+    status.textContent='Zoom complete: microscopic view of the bitter melon surface.';
+  }
+  function tick(now){
+    var t=now-t0;apply(t);
+    if(t<T+SETTLE)requestAnimationFrame(tick);else finish();
+  }
+  function play(){
+    if(state!=='idle')return;state='run';sec.classList.add('run');
+    if(reduce){finish();return}
+    Promise.all(imgs.map(function(im){return im.decode?im.decode().catch(function(){}):Promise.resolve()})).then(function(){t0=performance.now();requestAnimationFrame(tick)});
+  }
+  stage.addEventListener('click',play);
+  stage.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();play()}});
+})();
+</script>
+</body>
+</html>
