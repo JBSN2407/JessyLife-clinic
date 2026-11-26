@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Patient Stories // JessyLife Physiotherapy &amp; Rehabilitation Clinic</title>
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0CA7A9">
+<script>(function(){var d=document.documentElement,m=window.matchMedia&&matchMedia('(prefers-color-scheme: dark)'),o=null;try{o=sessionStorage.getItem('jl-theme');localStorage.removeItem('jl-theme')}catch(e){}d.dataset.theme=o||(m&&m.matches?'dark':'light');window.jlTheme={set:function(t){d.dataset.theme=t;try{sessionStorage.setItem('jl-theme',t)}catch(e){}document.dispatchEvent(new Event('jl-theme'))},toggle:function(){this.set(d.dataset.theme==='dark'?'light':'dark')}};if(m){var f=function(e){var s=null;try{s=sessionStorage.getItem('jl-theme')}catch(_){}if(!s){d.dataset.theme=e.matches?'dark':'light';document.dispatchEvent(new Event('jl-theme'))}};m.addEventListener?m.addEventListener('change',f):m.addListener(f)}})()</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,600;1,500;1,600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"}}</script>
+<style>
+:root{--bg:#FBFAF7;--bg2:#F2EFE8;--card:#fff;--ink:#23262B;--muted:#5E6369;--line:rgba(35,38,43,.16);--teal:#0CA7A9;--tealD:#087F81;--orange:#D36601;--gold:#C49440;--brown:#623B1A;--link:#087F81;
+ --title:'Avant Garde','ITC Avant Garde Gothic','Century Gothic','Jost',sans-serif;--sub:'Luxia','Cormorant Garamond',Georgia,serif;--body:'Inter',system-ui,-apple-system,sans-serif;
+ --u:min(100vw / 1440,100vh / 900);--w:calc(100vw / 1440)}
+[data-theme=dark]{--bg:#0F1214;--bg2:#161A1D;--card:#1B2024;--ink:#EEF1F2;--muted:#A3ABB0;--line:rgba(238,241,242,.18);--link:#2CC9CB}
+@media (max-width:819px),(orientation:portrait) and (max-width:1100px),(orientation:landscape) and (max-height:500px){:root{--u:1px;--w:1px}}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--body);-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 24px;border:1.5px solid var(--ink);font:600 12px/1 var(--title);letter-spacing:.1em;text-transform:uppercase;transition:background .2s,color .2s,transform .2s}
+.btn:hover{transform:translateY(-1px)}
+.btn.pri{background:var(--teal);border-color:var(--teal);color:#06201F}.btn.pri:hover{background:#0eb9bb}
+.btn.ghost:hover{background:var(--ink);color:var(--bg)}
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:30;height:max(56px,calc(64*var(--u)));display:flex;align-items:center;gap:calc(24*var(--u));padding:0 max(16px,calc(27*var(--u)));transition:background .3s}
+.nav.solid{background:var(--bg);border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:10px;margin-right:calc(18*var(--u))}
+.logo img{height:max(34px,calc(44*var(--u)));width:auto;display:block}.logo .lg-d{display:none}[data-theme=dark] .logo .lg-l{display:none}[data-theme=dark] .logo .lg-d{display:block}
+.links{display:flex;gap:calc(22*var(--u));font:500 max(12px,calc(13.5*var(--u)))/1 var(--title)}
+.links a{min-height:24px;display:flex;align-items:center;opacity:.85;border-bottom:2px solid transparent}.links a:hover,.links a[aria-current]{opacity:1;border-color:var(--orange)}
+.nav .r{margin-left:auto;display:flex;align-items:center;gap:12px}
+.tbtn{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center}.tbtn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7}
+.tbtn .sun{display:none}[data-theme=dark] .tbtn .sun{display:block}[data-theme=dark] .tbtn .moon{display:none}
+.nav .btn{min-height:40px;padding:0 18px;font-size:11px}
+.burger{display:none}
+/* GALLERY */
+#gallery{position:fixed;inset:0;touch-action:none;cursor:grab}#gallery.drag{cursor:grabbing}#gallery.over{cursor:pointer}
+#gl{position:absolute;inset:0;width:100%;height:100%;display:block;transition:opacity .3s}
+#veil{position:absolute;inset:0;background:var(--bg);pointer-events:none}
+.gui{position:fixed;inset:0;z-index:20;pointer-events:none;transition:opacity .3s,visibility .3s}.gui>*{pointer-events:auto}.gui.off{opacity:0;visibility:hidden}
+.m{display:block;overflow:hidden}.m>span{display:block}
+.arrows{position:absolute;left:calc(27*var(--u));top:calc(262*var(--u));display:flex;flex-direction:column;gap:calc(10*var(--u))}
+.arrows button{width:max(44px,calc(50*var(--u)));height:max(44px,calc(50*var(--u)));border:1.5px solid var(--ink);border-radius:50%;display:grid;place-items:center;transition:background .25s,color .25s}
+.arrows button:hover{background:var(--ink);color:var(--bg)}.arrows svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6}
+.hint{position:absolute;right:calc(27*var(--u));bottom:calc(229*var(--u));text-align:right;font:500 max(11px,calc(10.5*var(--u)))/1.7 var(--title);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.tog{position:absolute;right:calc(29*var(--u));bottom:calc(174*var(--u));display:flex;gap:2px;padding:2px;border:1px solid var(--line);border-radius:99px}
+.tog button{min-height:max(24px,calc(24*var(--u)));padding:0 calc(14*var(--u));border-radius:99px;font:600 max(11px,calc(10*var(--u)))/1 var(--title);letter-spacing:.12em;text-transform:uppercase}
+.tog button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.cap{position:absolute;left:calc(25*var(--u));bottom:calc(30*var(--u))}
+.kick{font:600 max(11px,calc(12*var(--u)))/1 var(--title);letter-spacing:.16em;color:var(--link);margin:0 0 calc(12*var(--u)) 3px}
+.cap h1{font:800 calc(104*var(--u))/.88 var(--title);letter-spacing:-.035em;text-transform:uppercase}.cap h1 .m:last-child{color:var(--teal)}
+.cap .ent{display:inline-block;margin-top:calc(16*var(--u));font:600 max(11px,calc(11.5*var(--u)))/1 var(--title);letter-spacing:.12em;border-bottom:1.5px solid var(--orange);padding-bottom:3px;min-height:24px}
+.pill{position:fixed;z-index:25;pointer-events:none;background:#12171a;color:#fff;font:600 10px/1 var(--title);letter-spacing:.14em;padding:8px 14px;border-radius:99px;opacity:0;transition:opacity .12s;transform:translate(-50%,-50%);white-space:nowrap}
+/* OVERLAYS */
+.ov{position:fixed;inset:0;z-index:15;background:var(--bg);overflow-y:auto;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s}.ov.on{opacity:1;visibility:visible}#list{z-index:14}
+.eyebrow{font:600 11px/1 var(--title);letter-spacing:.16em;text-transform:uppercase;color:var(--link)}
+.badge{display:inline-block;font:600 10px/1 var(--title);letter-spacing:.1em;text-transform:uppercase;padding:6px 8px;border:1px solid var(--orange);color:var(--orange)}
+[data-theme=light] .badge{color:#9A4A00}
+.pgw{padding-top:max(112px,calc(132*var(--w)));max-width:1440px;margin:0 auto;display:grid;grid-template-columns:calc(712*var(--w)) 1fr}
+.pgl{position:sticky;top:max(112px,calc(132*var(--w)));align-self:start;padding-left:calc(150*var(--w))}
+.media{position:relative;width:calc(400*var(--w));aspect-ratio:3/4;background:#0c1416;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.18)}
+.media img,.media video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.media video{opacity:0}.media video.on{opacity:1}
+.mmsg{position:absolute;left:0;right:0;top:0;padding:12px 16px;background:rgba(10,14,16,.78);color:#fff;font-size:12.5px;line-height:1.5}
+.mbar{position:absolute;left:0;right:0;bottom:0;display:flex;gap:4px;padding:8px;background:linear-gradient(0deg,rgba(0,0,0,.7),transparent)}
+.mbar button{min-height:32px;padding:0 12px;background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.35);font:600 10px/1 var(--title);letter-spacing:.1em;text-transform:uppercase}.mbar button:hover{background:rgba(255,255,255,.28)}
+.mmeta{width:calc(400*var(--w));margin-top:14px;display:flex;justify-content:space-between;gap:10px;font:500 11px/1.5 var(--title);color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.pgr{padding:0 calc(60*var(--w)) 60px 0;max-width:calc(700*var(--w) + 60px);min-width:0}.pgr>*{opacity:0;transition:opacity .15s}.pgr.show>*{opacity:1}
+.pgr h1{margin-top:12px;font:800 max(30px,calc(46*var(--w)))/1.02 var(--title);letter-spacing:-.025em;text-transform:uppercase}
+.pgr .who{margin-top:10px;font-family:var(--sub);font-style:italic;font-weight:500;font-size:max(19px,calc(22*var(--w)));line-height:1.25}.pgr .sub{margin-top:4px;font-family:var(--sub);font-weight:600;font-size:max(16px,calc(17*var(--w)));line-height:1.4;color:var(--muted)}
+.cat{margin-top:16px;font:600 11px/1.5 var(--title);letter-spacing:.1em;text-transform:uppercase;color:var(--link)}
+.tr{margin:22px 0 0;padding-left:18px;border-left:3px solid var(--teal)}.tr p{font-size:max(14.5px,calc(15.5*var(--w)));line-height:1.7;color:var(--ink);margin-bottom:12px;max-width:62ch}
+.acc{margin-top:28px;border-top:1px solid var(--line)}.acc details{border-bottom:1px solid var(--line)}
+.acc summary{list-style:none;cursor:pointer;min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:12px;font:600 12.5px/1.3 var(--title);letter-spacing:.06em;text-transform:uppercase}
+.acc summary::-webkit-details-marker{display:none}.acc summary::after{content:"+";font:400 20px/1 var(--body);transition:transform .25s}.acc details[open] summary::after{transform:rotate(45deg)}
+.ab{padding:2px 0 20px;font-family:var(--body);font-size:14px;line-height:1.65;color:var(--muted)}.ab h4{color:var(--ink);font-family:var(--title);font-weight:600;font-size:17px;line-height:1.3;letter-spacing:.01em;text-transform:none;margin:6px 0 10px}.ab ul{padding-left:18px;margin:6px 0}.ab li{margin:4px 0}.ab b{color:var(--ink)}
+.ab .note{margin-top:10px;font-size:12.5px;font-style:italic}.ab a{color:var(--link);text-decoration:underline;text-underline-offset:3px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}.chips span{padding:6px 10px;border:1px solid var(--line);font:500 11px/1 var(--title);letter-spacing:.04em}.chips span.on{border-color:var(--teal);background:rgba(12,167,169,.14);color:var(--ink)}
+.pcta{margin-top:26px;display:flex;flex-wrap:wrap;gap:12px}.illu{margin-top:18px;font-size:12px;color:var(--muted);line-height:1.5}
+.back{position:absolute;top:72px;left:calc(36*var(--w));z-index:3;font:600 11px/1 var(--title);letter-spacing:.12em;text-transform:uppercase;min-height:32px;padding:0 4px;border-bottom:1.5px solid var(--orange)}
+.more{margin-top:56px;padding:44px 0 60px calc(60*var(--w));background:var(--bg2)}.more h2,.lh h1{font:800 max(24px,calc(36*var(--w)))/1.05 var(--title);letter-spacing:-.02em;text-transform:uppercase}
+.more p.lede{margin-top:10px;max-width:62ch;color:var(--muted);font-size:14.5px;line-height:1.6}
+.mrow{display:flex;gap:18px;overflow-x:auto;padding:24px 20px 10px 0;scroll-snap-type:x proximity}.mrow .card{flex:0 0 min(220px,64vw);scroll-snap-align:start}
+.lh{padding:calc(108*var(--w)) calc(48*var(--w)) 0}.lh p{margin-top:12px;max-width:68ch;color:var(--muted);line-height:1.65;font-size:15px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:calc(40*var(--w)) calc(28*var(--w));padding:30px calc(48*var(--w)) 70px}
+.card{display:block;text-align:left;width:100%}.card .th{position:relative;aspect-ratio:3/4;overflow:hidden;background:#0c1416;margin-bottom:12px}
+.card .th img,.card .th video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(.2,.7,.2,1)}.card:hover .th img,.card:hover .th video{transform:scale(1.04)}
+.card .th video{opacity:0}.card .th video.on{opacity:1}
+.card .th::after{content:"";position:absolute;left:12px;bottom:12px;width:36px;height:4px;background:var(--orange)}
+.card h3{font:700 15px/1.25 var(--title);letter-spacing:.01em;text-transform:uppercase}.card .n{margin-top:4px;font-family:var(--sub);font-style:italic;font-weight:500;font-size:16px;line-height:1.3}.card .c{margin-top:6px;font:500 11px/1.4 var(--title);letter-spacing:.06em;text-transform:uppercase;color:var(--link)}
+.cta{padding:70px 20px;text-align:center;background:linear-gradient(135deg,#0B5E63,#0CA7A9);color:#06201F}.cta h2{font:800 max(26px,calc(44*var(--w)))/1.05 var(--title);letter-spacing:-.02em;text-transform:uppercase;max-width:20ch;margin:0 auto}
+.cta p{max-width:60ch;margin:16px auto 0;line-height:1.65;font-size:15px}.cta .pcta{justify-content:center}.cta .btn{border-color:#06201F}.cta .btn.pri{background:#06201F;color:#fff}.cta .btn.ghost:hover{background:#06201F;color:#fff}
+.no3d #gallery,.no3d .gui{display:none}
+#end{display:none}.ov #end{display:block}
+@media (max-width:1000px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:819px),(orientation:portrait) and (max-width:1100px),(orientation:landscape) and (max-height:500px){
+ .links,.nav .btn{display:none}.nav{height:56px;padding:0 16px}.burger{display:grid}
+ .links.open{display:flex;position:fixed;top:56px;left:0;right:0;flex-direction:column;gap:0;padding:8px 20px 16px;background:var(--bg);border-bottom:1px solid var(--line)}.links.open a{min-height:48px;border-bottom:1px solid var(--line)}
+ .hint{right:16px;left:16px;top:66px;bottom:auto;text-align:left;font-size:11px}.cap{left:14px;bottom:96px}.cap h1{font-size:min(19vw,15vh)}.cap .ent{margin-top:12px}
+ .arrows{flex-direction:row;left:16px;top:auto;bottom:24px;gap:10px}.tog{right:16px;bottom:30px}
+ .pgw{display:block;padding-top:112px}.pgl{position:static;padding:0 20px}.media,.mmeta{width:100%;max-width:420px;margin-left:auto;margin-right:auto}.pgl{display:block}.mmeta{margin-top:12px}
+ .pgr{padding:0 20px 40px;max-width:680px;margin:0 auto}.back{top:68px;left:16px}.more{padding:34px 0 50px 20px}.grid{padding:24px 20px 60px;gap:28px 16px}.lh{padding:84px 20px 0}
+}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+@media (orientation:landscape) and (max-height:500px){.cap h1{font-size:min(13vw,26vh)}.cap{bottom:18px}.hint{display:none}.arrows{left:auto;right:16px}.tog{top:60px;bottom:auto}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* keep the gallery toggle clear of the floating chat button on phones */
+@media (max-width:819px),(orientation:portrait) and (max-width:1100px){.tog{bottom:86px!important}}
+@media (orientation:landscape) and (max-height:500px){.arrows{bottom:76px}}
+
+/* ===== JESSYLIFE SHARED FOOTER + CHAT (jl-) ===== */
+.jl-footer{display:block;position:relative;z-index:1;justify-content:initial;gap:0;background:#062b2a;color:#e9f3ef;padding:56px 28px 90px;border-top:4px solid #F28C28;font-family:'Avenir Next','Inter',Arial,sans-serif;text-align:left}
+.jl-footer *{box-sizing:border-box}
+.jl-fgrid{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1.35fr .9fr 1fr 1.05fr 1.25fr;gap:32px}
+.jl-flogo{display:inline-block;margin-bottom:14px}.jl-flogo img{display:block;width:210px;max-width:100%;height:auto}
+.jl-fcol h3{display:inline-block;margin:0 0 16px;padding-bottom:9px;border-bottom:2px solid #F28C28;font:700 13.5px/1.2 'Luxia','Avant Garde','Century Gothic','Jost',sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#fff}
+.jl-fcol p,.jl-fcol li,.jl-fcol a{margin:0;font-size:13px;line-height:1.75;color:#c5d9d3;text-decoration:none}
+.jl-fcol ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+.jl-fcol a:hover{color:#F28C28}
+.jl-social{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.jl-social a{display:inline-flex;align-items:center;gap:7px;min-height:36px;padding:0 13px;border:1px solid rgba(255,255,255,.24);border-radius:30px;font-size:12px;color:#e9f3ef;transition:border-color .2s,color .2s}
+.jl-social a:hover{border-color:#F28C28;color:#F28C28}
+.jl-social svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.jl-news p{margin-bottom:0}
+.jl-news form{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.jl-news label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+.jl-news input{width:100%;min-height:44px;padding:0 14px;border-radius:10px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.06);color:#fff;font:inherit;font-size:14px}
+.jl-news input::placeholder{color:#8fa9a2}
+.jl-news input:focus{outline:2px solid #F28C28;outline-offset:1px}
+.jl-news button{min-height:44px;border:0;border-radius:999px;background:#F28C28;color:#102f2d;font:700 13px/1 'Avenir Next','Inter',Arial,sans-serif;letter-spacing:.04em;cursor:pointer;transition:background .2s}
+.jl-news button:hover{background:#ffad55}
+.jl-news .jl-nmsg{min-height:1.4em;font-size:12px;line-height:1.5;color:#f5b66f}
+.jl-fbottom{max-width:1240px;margin:34px auto 0;padding-top:18px;border-top:1px solid rgba(255,255,255,.15);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;font-size:12px;color:#a9c1b9}
+.jl-fbottom a{color:#a9c1b9;text-decoration:none}.jl-fbottom a:hover{color:#F28C28}
+.jl-chat{position:fixed;right:22px;bottom:22px;z-index:99;display:flex;align-items:center;gap:10px;padding:13px 18px;border-radius:999px;background:#16875e;color:#fff!important;text-decoration:none;box-shadow:0 8px 28px rgba(0,0,0,.25);font:700 14px/1 'Avenir Next','Inter',Arial,sans-serif;transition:background .2s,transform .2s}
+.jl-chat:hover{background:#0d704b;transform:translateY(-2px)}
+.jl-chat svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media(max-width:1100px){.jl-fgrid{grid-template-columns:repeat(3,1fr)}.jl-fbrand{grid-column:1/-1}}
+@media(max-width:700px){.jl-fgrid{grid-template-columns:1fr 1fr}.jl-news{grid-column:1/-1}}
+@media(max-width:620px){.jl-chat{right:14px;bottom:14px;padding:12px 15px}}
+@media(max-width:480px){.jl-fgrid{grid-template-columns:1fr}.jl-chat span{display:none}.jl-chat{padding:14px}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <a class="logo" href="index.html" aria-label="JessyLife home" id="logo"><img class="lg-l" src="assets/logo/jessylife-logo.png" alt="JessyLife Physiotherapy and Rehabilitation Clinic" width="1051" height="273"><img class="lg-d" src="assets/logo/jessylife-logo-light.png" alt="" aria-hidden="true" width="1051" height="273"></a>
+  <nav class="links" id="links" aria-label="Main">
+    <a href="index.html">Home</a><a href="index.html#facilities">About Us</a><a href="S.html">Our Services</a><a href="#" id="nav-stories" aria-current="page">Patient Stories</a><a href="#" id="nav-contact">Contact Us</a>
+  </nav>
+  <div class="r">
+    <button class="tbtn" id="theme" aria-label="Switch between light and dark mode"><svg class="moon" viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+    <a class="btn pri" href="https://forms.gle/mpMdBr9Dcttp3m3Q8" target="_blank" rel="noopener">Book an Appointment</a>
+    <button class="tbtn burger" id="burger" aria-label="Menu" aria-expanded="false"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+</header>
+
+<main id="gallery" aria-label="Patient stories gallery">
+  <canvas id="gl"></canvas><div id="veil"></div>
+</main>
+
+<div class="gui" id="gui">
+  <div class="arrows"><button id="prev" aria-label="Previous story"><svg viewBox="0 0 24 24"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button><button id="next" aria-label="Next story"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button></div>
+  <div class="hint" id="hint"><span class="m"><span id="h1">Scroll or drag to walk the gallery</span></span><span class="m"><span id="h2">Click a story to look closer</span></span></div>
+  <div class="tog" role="group" aria-label="View"><button id="tg" aria-pressed="true">Gallery</button><button id="tl" aria-pressed="false">All stories</button></div>
+  <div class="cap"><p class="kick m"><span>JESSYLIFE PATIENT STORIES</span></p><h1><span class="m"><span>Every step</span></span><span class="m"><span>matters</span></span></h1><button class="ent m" id="enter"><span>MEET THE PEOPLE BEHIND THE PROGRESS &rarr;</span></button></div>
+</div>
+<div class="pill" id="pill">WATCH THE STORY</div>
+
+<section class="ov" id="list" aria-label="All patient stories">
+  <div class="lh"><span class="eyebrow">Real people. Real progress.</span><h1 style="margin-top:12px">Every recovery has a story</h1><p>Behind every rehabilitation journey is a person, a challenge and a reason to keep moving forward. Discover the stories of individuals whose journeys remind us that progress comes in many forms.</p></div>
+  <div class="grid" id="grid"></div>
+</section>
+
+<section class="ov" id="page" aria-label="Patient story">
+  <button class="back" id="back">&larr; Back to gallery</button>
+  <div class="pgw">
+    <div class="pgl"><div class="media" id="media"><img id="m-img" alt=""><video id="m-vid" playsinline muted loop preload="none"></video><p class="mmsg" id="m-msg" hidden></p>
+      <div class="mbar"><button id="m-play">Pause</button><button id="m-mute">Sound on</button><button id="m-full">Full story</button></div></div>
+      <div class="mmeta"><span>Patient story</span><span id="m-note">5-second preview</span></div></div>
+    <div class="pgr" id="pgr">
+      <span class="eyebrow" id="p-count"></span>
+      <h1 id="p-title"></h1><p class="who" id="p-name"></p><p class="sub" id="p-sub"></p><p class="cat" id="p-cat"></p>
+      <div class="tr" id="p-tr"></div>
+      <div class="acc" id="p-acc"></div>
+      <div class="pcta"><a class="btn pri" href="https://forms.gle/mpMdBr9Dcttp3m3Q8" target="_blank" rel="noopener">Book a consultation</a><a class="btn ghost" href="https://wa.me/233201300714" target="_blank" rel="noopener">Message us on WhatsApp</a></div>
+    </div>
+  </div>
+  <div class="more"><h2>More stories. More reasons to keep going.</h2><p class="lede">Every journey is different. Discover more experiences from people working towards better movement, independence and wellbeing.</p><div class="mrow" id="mrow"></div></div>
+</section>
+
+<div id="end">
+  <section class="cta"><h2>Your journey deserves the right support.</h2><p>Whether you are recovering from an injury, supporting a child with developmental needs, managing a long-term condition or seeking help with everyday mobility, the JessyLife team is here to help you explore the next step.</p>
+    <div class="pcta"><a class="btn pri" href="https://forms.gle/mpMdBr9Dcttp3m3Q8" target="_blank" rel="noopener">Book an appointment</a><a class="btn ghost" href="https://wa.me/233201300714" target="_blank" rel="noopener">Contact JessyLife</a></div></section>
+
+<footer class="jl-footer" id="contact">
+  <div class="jl-fgrid">
+    <div class="jl-fcol jl-fbrand">
+      <a class="jl-flogo" href="index.html" aria-label="JessyLife home"><img src="assets/logo/jessylife-logo-light.png" alt="JessyLife Physiotherapy and Rehabilitation Clinic" width="1051" height="273" loading="lazy"></a>
+      <p>Supporting movement, independence and better living through professional rehabilitation and therapy.</p>
+      <div class="jl-social">
+        <a href="https://www.facebook.com/738827165976476" target="_blank" rel="noopener" aria-label="JessyLife on Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6.5v3.5H9V21h3.5v-7.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15z"/></svg><span>Facebook</span></a>
+        <a href="https://www.instagram.com/jessylife_clinic/" target="_blank" rel="noopener" aria-label="JessyLife on Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg><span>Instagram</span></a>
+        <a href="https://www.tiktok.com/@jessylife_clinic" target="_blank" rel="noopener" aria-label="JessyLife on TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.3 4.4 5 4.6"/></svg><span>TikTok</span></a>
+        <a href="https://wa.me/233201300714" target="_blank" rel="noopener" aria-label="JessyLife on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8z"/><path d="M9 8.5c0 3.5 2.5 6.5 6.5 6.5l1-1.6-2.1-1-1 1c-1.2-.5-2.2-1.5-2.8-2.8l1-1-1-2.1z"/></svg><span>WhatsApp</span></a>
+      </div>
+    </div>
+    <div class="jl-fcol">
+      <h3>Useful Links</h3>
+      <ul><li><a href="index.html#home">Home</a></li><li><a href="S.html">Our Services</a></li><li><a href="#" data-go="list">Patient Stories</a></li><li><a href="index.html#facilities">Our Facilities</a></li><li><a href="index.html#branches">Our Branches</a></li><li><a href="index.html#contact">Contact Us</a></li><li><a href="https://docs.google.com/forms/d/e/1FAIpQLSdRnCmRJ_JcGDqiNYpc3UVLM0PdYHo48b-zDK2YdBogLr6G9Q/viewform" target="_blank" rel="noopener">Book an Appointment</a></li></ul>
+    </div>
+    <div class="jl-fcol">
+      <h3>Specialised Services</h3>
+      <ul><li>Neuro &amp; Orthopaedic Clinic</li><li>Corporate Health Services</li><li>Occupational Assessments</li><li>Private Health Insurance Services</li><li>Ergonomic Assessments</li><li>Company Clinic Services</li><li>Portable Clinic Services</li></ul>
+    </div>
+    <div class="jl-fcol">
+      <h3>Hours &amp; Location</h3>
+      <ul><li>Mon &ndash; Fri: 8:00 am &ndash; 5:00 pm</li><li>Saturday: Appointment only</li><li>Home services: 7:00 am &ndash; 9:00 pm</li><li>Achimota Branch</li><li>10 Bus Avenue, Achimota, Accra, Ghana</li><li><a href="tel:+233201300714">+233 20 130 0714</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=JessyLife+Physiotherapy+and+Rehabilitation+Clinic+10+Bus+Avenue+Achimota+Accra" target="_blank" rel="noopener">View on Google Maps &#8599;</a></li></ul>
+    </div>
+    <div class="jl-fcol jl-news">
+      <h3>Newsletter</h3>
+      <p>Recovery tips, clinic news and health events, straight to your inbox. No spam.</p>
+      <form novalidate>
+        <label for="jl-email">Email address</label>
+        <input id="jl-email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+        <p class="jl-nmsg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+  <div class="jl-fbottom"><span>&copy; <span class="jl-year">2026</span> JessyLife Physiotherapy &amp; Rehabilitation Clinic. All rights reserved.</span><span><a href="#" data-top>Back to top &uarr;</a></span></div>
+</footer>
+</div>
+
+<a class="jl-chat" href="https://wa.me/233201300714?text=Hello%20JessyLife%2C%20I%20would%20like%20to%20make%20an%20enquiry." target="_blank" rel="noopener" aria-label="Message JessyLife on WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8z"/><path d="M9 8.5c0 3.5 2.5 6.5 6.5 6.5l1-1.6-2.1-1-1 1c-1.2-.5-2.2-1.5-2.8-2.8l1-1-1-2.1z"/></svg><span>Message Us</span></a>
+<script>
+/* ===== Shared footer: year, back to top, newsletter =====
+   NEWSLETTER_ENDPOINT: paste a form-post URL (Formspree, Mailchimp, Google Form
+   ".../formResponse") and set NEWSLETTER_FIELD to its email field name
+   (e.g. "entry.123456789" for Google Forms). Left empty, sign-ups are sent to
+   the clinic's WhatsApp so no subscriber is lost. */
+(function(){
+  var NEWSLETTER_ENDPOINT='', NEWSLETTER_FIELD='email';
+  document.querySelectorAll('.jl-year').forEach(function(e){e.textContent=new Date().getFullYear()});
+  document.querySelectorAll('[data-top]').forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});document.querySelectorAll('.ov.on').forEach(function(o){o.scrollTo({top:0,behavior:'smooth'})})})});
+  document.querySelectorAll('.jl-news form').forEach(function(f){
+    f.addEventListener('submit',function(e){
+      e.preventDefault();var em=f.email.value.trim(),m=f.querySelector('.jl-nmsg');
+      if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){m.textContent='Please enter a valid email address.';f.email.focus();return}
+      if(NEWSLETTER_ENDPOINT){
+        var b=new URLSearchParams();b.append(NEWSLETTER_FIELD,em);
+        fetch(NEWSLETTER_ENDPOINT,{method:'POST',mode:'no-cors',body:b}).then(function(){m.textContent='Thank you! You are now subscribed.';f.reset()}).catch(function(){m.textContent='Sorry, something went wrong. Please try again.'});
+      }else{
+        window.open('https://wa.me/233201300714?text='+encodeURIComponent('Hello JessyLife, please add '+em+' to your newsletter mailing list.'),'_blank','noopener');
+        m.textContent='Thank you! Send the WhatsApp message that just opened to confirm.';f.reset();
+      }
+    });
+  });
+})();
+</script>
+<script type="module">
+/* ===== STORIES: the single source of truth. Edit text/paths here only. Media folder: assets/testimonials/<folder>/ ===== */
+const BOOK='https://forms.gle/mpMdBr9Dcttp3m3Q8',WA='https://wa.me/233201300714';
+const WHO=['WHO: Rehabilitation fact sheet','https://www.who.int/news-room/fact-sheets/detail/rehabilitation'];
+const WHOQ=['WHO: Rehabilitation questions and answers','https://www.who.int/news-room/questions-and-answers/item/rehabilitation'];
+const SVC=['Physiotherapy','Occupational Therapy','Speech & Language Therapy','Diet Therapy','Psychotherapy','Therapeutic Massage','Home Nursing','Post-Surgery Support','Chronic Care Monitoring','Geriatric & Paediatric Home Care','Pain & Mobility Support'];
+const STORIES=[
+{id:'stroke-recovery',folder:'daniel-stroke',name:'Mr Daniel A.',title:'I found my way back to my feet',sub:'A determined spirit learning to move forward again.',cat:'Stroke Rehabilitation | Physiotherapy',tag:'Stroke rehabilitation',c1:'#0CA7A9',c2:'#06474B',
+ text:['After my stroke, the things I used to do without thinking suddenly became difficult. Standing up, walking across a room and even maintaining my balance became challenges.','At first, I was frustrated because I knew what I wanted to do, but my body was not responding the way it used to.','My physiotherapy sessions at JessyLife became an important part of my journey. We started with simple movements, balance exercises and learning how to transfer my weight safely.','Some days were difficult, but my therapist encouraged me to keep working within my ability. Gradually, I began to notice changes. I became more confident standing and moving around with support.','I have learnt that recovery takes patience. I am proud of the progress I have made, and I am grateful to the team for walking this journey with me.'],
+ th:{h:'Physiotherapy and stroke rehabilitation',b:['Movement and mobility','Balance and coordination','Strength and endurance','Transfers and functional movement','Walking (gait) practice','Safe return to appropriate activities'],refs:[['CSP: Stroke and physiotherapy','https://www.csp.org.uk/conditions/stroke'],['CSP: Physiotherapy works for stroke','https://www.csp.org.uk/publications/physiotherapy-works-stroke'],WHOQ]},
+ oth:[['Occupational therapists','support daily living activities, functional independence and adaptation.'],['Speech and language therapists','assess and support communication and swallowing difficulties where indicated.'],['Dietitians','provide nutrition support where required.'],['Nurses','support ongoing care and monitoring within their scope of practice.']],inv:[0,1,2,3]},
+{id:'autism-ot',folder:'ama-autism',name:'Mrs Ama K.',title:'The little things became big milestones',sub:'A mother\u2019s hope, patience and joy.',cat:'Paediatric Occupational Therapy | Autism Support',tag:'Paediatric OT',c1:'#D36601',c2:'#7B3D00',
+ text:['When we first started looking for support for our child, we wanted someone who would understand that every child is different.','Our occupational therapy sessions helped us look at everyday activities in a new way. We worked on routines, play, sensory experiences and practical activities that could help our child participate more comfortably.','The therapist also guided us on how to support these activities at home.','What I appreciate most is that progress was not measured only by big achievements. It was also in the little things: becoming more comfortable with an activity, engaging in play and participating in parts of our daily routine.','We are still learning, and every child has their own pace. Having guidance and support has made the journey feel less overwhelming.'],
+ th:{h:'Paediatric occupational therapy',b:['Taking part in daily routines such as dressing, eating and play','Sensory-related needs and comfortable participation','Practical, goal-based activities agreed with the family','Guidance for supporting activities at home'],note:'Occupational therapy supports participation. It does not aim to change who a child is.',refs:[['RCOT: Occupational therapy for children and young people','https://www.rcot.co.uk/explore-resources/children-young-people-families'],['RCOT: What is occupational therapy?','https://www.rcot.co.uk/learn-about-occupational-therapy/what-occupational-therapy']]},
+ oth:[['Occupational therapists','support participation in daily routines, sensory-related needs and functional activities.'],['Speech and language therapists','support communication and interaction where appropriate.'],['Families and caregivers','take part in agreed strategies at home.']],inv:[1,2]},
+{id:'speech-therapy',folder:'lydia-speech',name:'Mrs Lydia B.',title:'I found my voice again',sub:'The courage to communicate, one word at a time.',cat:'Speech and Language Therapy',tag:'Speech & language',c1:'#0CA7A9',c2:'#623B1A',
+ text:['There was a time when expressing myself became something I had to think carefully about. I knew what I wanted to say, but getting the words out was difficult.','It affected my confidence, especially when speaking with family and friends.','During my sessions, the therapist worked with me patiently. We practised communication exercises and focused on the areas I found most challenging.','The sessions were encouraging, and I began to feel more comfortable practising what I had learnt outside the clinic.','I am still working on my communication, but I no longer feel that I have to give up when expressing myself becomes difficult.','Being able to communicate is something I appreciate even more now.'],
+ th:{h:'Speech and language therapy',b:['Assessment of communication, and of eating, drinking and swallowing difficulties where relevant','Practice exercises and everyday communication strategies','Guidance for family and friends as communication partners','Confidence building at the person\u2019s own pace'],refs:[['RCSLT: What is speech and language therapy?','https://rcslt.org/speech-and-language-therapy']]},
+ oth:[['Doctors and nurses','provide medical assessment and referral where needed.'],['Occupational therapists','support memory, daily activities and independence where relevant.'],['Dietitians','advise when swallowing affects eating and nutrition.'],['Family and friends','act as communication partners.']],inv:[2,1,3]},
+{id:'burns-rehab',folder:'kojo-burns',name:'Mr Kojo M.',title:'Beyond the scars',sub:'A strong fighter rebuilding movement and confidence.',cat:'Burns Rehabilitation | Physiotherapy',tag:'Burns rehabilitation',c1:'#C49440',c2:'#623B1A',
+ text:['After my burn injury, my attention was initially focused on healing. But as time went on, I realised that there were other challenges I had to face.','Some movements felt restricted, and I was worried about how the affected areas would move as I recovered.','My rehabilitation involved carefully guided exercises, movement and advice on how to use the affected areas safely.','The therapist explained why each exercise mattered and encouraged me to work at a pace that respected my healing.','There were difficult days, but I began to understand that rehabilitation was about more than the injury itself. It was about helping me regain movement and confidence in everyday activities.','My journey is ongoing, but I am grateful for the support I have received.'],
+ th:{h:'Physiotherapy in burns rehabilitation',b:['Positioning and movement','Range-of-motion exercises where appropriate','Movement restrictions linked to scarring','Functional mobility','Rehabilitation after medical stabilisation'],note:'Physiotherapy complements, and does not replace, wound care, surgery or specialist burn management.',refs:[WHO,['CSP: Rehabilitation and physiotherapy','https://www.csp.org.uk/conditions/rehabilitation']]},
+ oth:[['Physiotherapists','support movement and functional mobility.'],['Occupational therapists','support hand function, self-care and daily activities.'],['Other relevant specialists','contribute according to the person\u2019s clinical needs.']],inv:[0,1,10]},
+{id:'diet-therapy',folder:'esther-diet',name:'Mrs Esther O.',title:'I learnt to nourish myself differently',sub:'A fresh perspective on food, health and everyday choices.',cat:'Diet Therapy | Nutrition Support',tag:'Diet therapy',c1:'#0CA7A9',c2:'#C49440',
+ text:['I used to think improving my diet meant giving up everything I enjoyed eating.','When I started receiving diet therapy, I began to understand that healthy eating could be practical and realistic.','We discussed my eating habits, my daily routine and the changes I could maintain. The advice was explained in a way that made sense for the foods and meals I was familiar with.','Instead of feeling overwhelmed, I began making gradual changes.','I have learnt to be more intentional about my food choices and to understand how nutrition can support my general wellbeing.','It has been a learning process, and I appreciate having guidance along the way.'],
+ th:{h:'Diet therapy and nutrition support',b:['A review of eating habits and daily routine','Practical changes using familiar foods and meals','Gradual, sustainable goals','Nutrition education and follow-up'],refs:[['BDA: What is a dietitian?','https://bda.uk.com/about/about_bda/dietitians']]},
+ oth:[['Doctors and nurses','manage medical conditions that affect nutrition.'],['Physiotherapists and occupational therapists','support safe, regular activity and daily routines.'],['Family and caregivers','help make meals and habits workable at home.']],inv:[3,0,1]},
+{id:'psychotherapy',folder:'abena-psychotherapy',name:'Miss Abena S.',title:'I finally had space to be heard',sub:'Finding the courage to speak, reflect and begin again.',cat:'Psychotherapy | Emotional Wellbeing',tag:'Psychotherapy',c1:'#6A6A6A',c2:'#0A5C5E',
+ text:['Sometimes, you can be going through a lot without knowing how to explain what you are feeling.','I wanted a space where I could talk openly without feeling judged.','My sessions gave me an opportunity to reflect on my experiences, understand some of my responses and explore healthier ways of managing difficult situations.','I appreciated being listened to and having the time to work through things at my own pace.','I have learnt that asking for support is not a weakness. It can be an important step towards taking care of yourself.','I am still learning, but I feel more comfortable acknowledging my emotions and seeking help when I need it.'],
+ th:{h:'Psychotherapy and emotional wellbeing',b:['A private, confidential space to talk','Reflecting on experiences and responses','Exploring healthier ways of coping','Working at the person\u2019s own pace'],note:'Psychotherapy supports wellbeing and does not guarantee a particular outcome. Your confidentiality matters.',refs:[WHOQ]},
+ oth:[['Doctors','provide medical assessment and referral where needed.'],['Occupational therapists and physiotherapists','help when pain, illness or daily activities affect wellbeing.'],['Trusted family and friends','are an important support network.']],inv:[4]},
+{id:'massage-therapy',folder:'michael-massage',name:'Mr Michael T.',title:'The moment my body could finally relax',sub:'Releasing tension and rediscovering comfort.',cat:'Therapeutic Massage | Pain and Mobility Support',tag:'Therapeutic massage',c1:'#D36601',c2:'#0A5C5E',
+ text:['With my daily activities, I often found myself feeling tense and uncomfortable.','I decided to explore therapeutic massage as part of taking better care of my body.','What stood out was the attention given to understanding my needs before the session. The therapist explained the approach and made sure I was comfortable throughout.','The experience gave me time to relax, and I appreciated the guidance on other ways to support my comfort between sessions.','It reminded me that taking care of your body should not only happen when something goes wrong.'],
+ th:{h:'Therapeutic massage',b:['A conversation about needs and comfort before treatment','Relaxation and relief from muscle tension','Advice for comfort between sessions'],note:'Massage supports comfort and relaxation. It is not a cure for underlying medical conditions.',refs:[WHOQ]},
+ oth:[['Physiotherapists','assess movement and prescribe exercise where needed.'],['Doctors','review symptoms that persist or worsen.'],['Occupational therapists','advise on posture and everyday activities.']],inv:[5,0,10]},
+{id:'hand-therapy',folder:'samuel-hand-therapy',name:'Mr Samuel D.',title:'One hand. A new chapter.',sub:'Learning to adapt while working towards better hand function.',cat:'Orthopaedic Rehabilitation | Hand Therapy and Casting',tag:'Hand therapy',c1:'#C49440',c2:'#0A5C5E',
+ text:['An injury to my hand affected more of my everyday life than I expected.','Simple activities that I used to do easily became frustrating. I had to adjust how I handled objects and completed some of my usual tasks.','The treatment and rehabilitation process helped me understand the importance of protecting the injured area while working towards improved function.','I received guidance on my hand care, the importance of following the treatment plan and the activities that were appropriate at each stage.','It has been a learning experience, and I appreciate the support and practical advice I received.'],
+ th:{h:'Hand rehabilitation',b:['Protecting the injured area','Range of motion','Strength and dexterity','Functional, everyday activities','Following the treatment plan and clinical instructions'],note:'Casting and orthopaedic treatment depend on clinical assessment and medical indication.',refs:[WHO]},
+ oth:[['Doctors and orthopaedic specialists','diagnose and make medical treatment decisions.'],['Occupational therapists','support hand function, adaptation and daily activities.'],['Physiotherapists','support mobility and strength.']],inv:[1,0,10]},
+{id:'home-rehab',folder:'grace-intensive-rehab',name:'Mrs Grace N.',title:'Care that came home',sub:'A family finding strength through consistent support.',cat:'Intensive Rehabilitation | Occupational Therapy | Physiotherapy | Home Nursing',tag:'Intensive home rehab',c1:'#0CA7A9',c2:'#D36601',
+ text:['Supporting a loved one through a difficult period of recovery can be demanding, especially when they need help with everyday activities.','Having rehabilitation and nursing support at home made it easier for our family to organise care around their needs.','The team helped with guided movement, daily activities and practical support. We also received guidance on how to make the home environment more supportive.','What mattered to us was having people who understood that rehabilitation does not happen in isolation. It involves the patient, the family and the professionals supporting them.','The journey requires commitment, but having a coordinated team has made us feel supported.'],
+ th:{h:'Intensive rehabilitation at home',b:['Guided movement and daily activities','Advice on making the home safer and more supportive','Guidance and education for family caregivers','Coordination between the people involved'],note:'Home nursing is not a substitute for emergency care or hospital treatment.',refs:[WHO,['CSP: Rehabilitation and physiotherapy','https://www.csp.org.uk/conditions/rehabilitation']]},
+ oth:[['Nurses','provide home nursing care within their scope of practice.'],['Physiotherapists and occupational therapists','support movement, daily activities and home adaptation.'],['Doctors','provide medical review and referrals.'],['Family caregivers','are central members of the team.']],inv:[0,1,6,8]}
+];
+STORIES.forEach(s=>{s.thumb=`assets/testimonials/${s.folder}/thumbnail.jpg`;s.preview=`assets/testimonials/${s.folder}/preview-5s.mp4`;s.full=`assets/testimonials/${s.folder}/full-testimonial.mp4`;s.posterSrc=`assets/testimonials/${s.folder}/poster.jpg`});
+
+/* ===== ENGINE ===== */
+const $=(s,e=document)=>e.querySelector(s),$$=(s,e=document)=>[...e.querySelectorAll(s)];
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const smallQ=matchMedia('(max-width:819px),(orientation:portrait) and (max-width:1100px),(orientation:landscape) and (max-height:500px)');
+const isDark=()=>document.documentElement.dataset.theme==='dark';
+const esc=t=>t.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+
+
+/* ---- posters (generated placeholders; replaced automatically by thumbnail.jpg when it exists) ---- */
+function wrap(g,t,w,max){const out=[];let l='';for(const x of t.split(' ')){const n=l?l+' '+x:x;if(g.measureText(n).width>w&&l){out.push(l);l=x}else l=n}out.push(l);return out.slice(0,max)}
+function drawPoster(s){
+  const w=480,h=640,c=s.cv||(s.cv=document.createElement('canvas'));c.width=w;c.height=h;const g=c.getContext('2d');
+  if(s.img){const r=Math.max(w/s.img.width,h/s.img.height),dw=s.img.width*r,dh=s.img.height*r;g.drawImage(s.img,(w-dw)/2,(h-dh)/2,dw,dh)}
+  else{const gr=g.createLinearGradient(0,0,w,h);gr.addColorStop(0,s.c1);gr.addColorStop(1,s.c2);g.fillStyle=gr;g.fillRect(0,0,w,h);
+    g.globalAlpha=.16;g.fillStyle='#fff';g.beginPath();g.arc(w*.82,h*.26,w*.4,0,7);g.fill();g.beginPath();g.arc(w*.06,h*.6,w*.28,0,7);g.fill();g.globalAlpha=1;
+    g.fillStyle='rgba(255,255,255,.93)';g.beginPath();g.arc(w/2,h*.38,36,0,7);g.fill();g.fillStyle='#0b2a2b';g.beginPath();g.moveTo(w/2-10,h*.38-16);g.lineTo(w/2+17,h*.38);g.lineTo(w/2-10,h*.38+16);g.fill()}
+  const sc=g.createLinearGradient(0,h*.5,0,h);sc.addColorStop(0,'rgba(0,0,0,0)');sc.addColorStop(1,'rgba(0,0,0,.78)');g.fillStyle=sc;g.fillRect(0,h*.5,w,h*.5);
+  g.fillStyle='#D36601';g.fillRect(28,h-170,44,4);
+  g.fillStyle='#fff';g.font='600 14px Jost,sans-serif';g.letterSpacing='2.5px';g.fillText(s.tag.toUpperCase(),28,h-142);
+  g.font='700 30px Jost,sans-serif';g.letterSpacing='0px';wrap(g,s.title.toUpperCase(),w-56,3).forEach((t,i)=>g.fillText(t,28,h-106+i*34));
+  s.url=c.toDataURL('image/jpeg',.88);if(s.tex)s.tex.needsUpdate=true;
+  $$('img[data-sid="'+STORIES.indexOf(s)+'"]').forEach(im=>im.src=s.url)}
+function loadThumbs(){STORIES.forEach(s=>{const im=new Image();im.onload=()=>{s.img=im;drawPoster(s)};im.src=s.thumb})}
+
+/* ---- cards ---- */
+const cardHTML=(s,i)=>`<button class="card" data-i="${i}" aria-label="Open story: ${esc(s.title)}"><div class="th"><img data-sid="${i}" alt="" loading="lazy"><video muted loop playsinline preload="none" data-src="${s.preview}"></video></div><h3>${esc(s.title)}</h3><p class="n">${esc(s.name)} &middot; ${esc(s.sub)}</p><p class="c">${esc(s.cat)}</p></button>`;
+const io='IntersectionObserver' in window?new IntersectionObserver(es=>es.forEach(e=>{const v=e.target;if(e.isIntersecting){if(!v.getAttribute('src')){v.src=v.dataset.src;v.onloadeddata=()=>{v.classList.add('on');v.play().catch(()=>{})};v.onerror=()=>v.removeAttribute('src')}else v.play&&v.play().catch(()=>{})}else v.pause&&v.pause()}),{threshold:.4}):null;
+function mountCards(el,list){el.innerHTML=list.map(i=>cardHTML(STORIES[i],i)).join('');$$('.card',el).forEach(b=>{b.onclick=()=>openPage(+b.dataset.i,b.querySelector('.th'));const v=$('video',b);if(io&&!reduce)io.observe(v)})}
+
+/* ---- overlays ---- */
+let cur=0,mode='gallery',api={};
+const endEl=$('#end'),pageEl=$('#page'),listEl=$('#list'),nav=$('#nav');
+function setNav(){nav.classList.toggle('solid',mode!=='gallery')}
+function setToggle(){$('#tg').setAttribute('aria-pressed',mode==='gallery');$('#tl').setAttribute('aria-pressed',mode==='list')}
+function showEnd(host){host.appendChild(endEl)}
+function openList(toEnd){$('#pill').style.opacity=0;mode='list';listEl.classList.add('on');pageEl.classList.remove('on');$('#gui').classList.add('off');$('#gl').style.opacity=0;showEnd(listEl);setNav();setToggle();listEl.scrollTop=toEnd?listEl.scrollHeight:0;api.stopPreview&&api.stopPreview()}
+function goGallery(){const was=mode;mode='gallery';listEl.classList.remove('on');pageEl.classList.remove('on');$('#gui').classList.remove('off');$('#gl').style.opacity=1;setNav();setToggle();document.body.classList.contains('no3d')?openList():(was==='page'&&api.refocus&&api.refocus(cur))}
+const MEDIA=$('#m-img'),V=$('#m-vid'),MSG=$('#m-msg');let vmode='preview';
+function msg(t){MSG.textContent=t;MSG.hidden=false}
+function setMedia(s){vmode='preview';V.pause();V.removeAttribute('src');V.classList.remove('on');V.loop=true;V.muted=true;V.controls=false;MSG.hidden=true;MEDIA.src=s.url;$('#m-note').textContent='5-second preview';$('#m-full').hidden=false;
+  V.src=s.preview;V.load();updBar()}
+V.onloadeddata=()=>{V.classList.add('on');if(vmode==='full')V.controls=true;V.play().catch(()=>{});updBar()};
+V.onerror=()=>{if(!V.getAttribute('src'))return;V.classList.remove('on');V.removeAttribute('src');msg(vmode==='full'?'The full testimonial has not been uploaded yet. Please check back soon.':'Video preview coming soon.')};
+function updBar(){$('#m-play').textContent=V.paused?'Play':'Pause';$('#m-mute').textContent=V.muted?'Sound on':'Sound off'}
+V.onplay=V.onpause=V.onvolumechange=updBar;
+$('#m-play').onclick=()=>{if(!V.getAttribute('src')){msg('Video coming soon.');return}V.paused?V.play():V.pause()};
+$('#m-mute').onclick=()=>{V.muted=!V.muted};
+$('#m-full').onclick=()=>{const s=STORIES[cur];vmode='full';MSG.hidden=true;V.classList.remove('on');V.loop=false;V.muted=false;V.controls=true;V.src=s.full;V.load();$('#m-note').textContent='Full testimonial'};
+function fillPage(i){const s=STORIES[i];cur=i;
+  $('#p-count').textContent='Patient story '+String(i+1).padStart(2,'0')+' / '+String(STORIES.length).padStart(2,'0');$('#p-title').textContent=s.title;$('#p-name').textContent=s.name;$('#p-sub').textContent=s.sub;$('#p-cat').textContent=s.cat;
+  $('#p-tr').innerHTML=s.text.map(p=>'<p>'+esc(p)+'</p>').join('');
+  const refs=(s.th.refs||[]).map(r=>`<li><a href="${r[1]}" target="_blank" rel="noopener">${esc(r[0])}</a></li>`).join('');
+  $('#p-acc').innerHTML=
+   `<details open><summary>The therapy behind the journey</summary><div class="ab"><h4>${esc(s.th.h)}</h4><p>Depending on assessment, this care may help with:</p><ul>${s.th.b.map(x=>'<li>'+esc(x)+'</li>').join('')}</ul>${s.th.note?'<p class="note">'+esc(s.th.note)+'</p>':''}<p class="note">General education only, not an individual treatment plan.</p>${refs?'<p style="margin-top:10px"><b>Clinical reading</b></p><ul>'+refs+'</ul>':''}</div></details>`+
+   `<details><summary>Other therapists involved</summary><div class="ab"><ul>${s.oth.map(o=>'<li><b>'+esc(o[0])+'</b> '+esc(o[1])+'</li>').join('')}</ul><p>Working together helps coordinate care. Not every patient needs every professional.</p></div></details>`+
+   `<details><summary>Multidisciplinary rehabilitation</summary><div class="ab"><h4>More than one service. One coordinated journey.</h4><p>JessyLife care plans are personalised after assessment, and the mix of services depends on each person\u2019s needs. Services highlighted below are the ones relevant to this story.</p><div class="chips">${SVC.map((n,k)=>`<span class="${s.inv.includes(k)?'on':''}">${esc(n)}</span>`).join('')}</div><ul><li>Clinic-based rehabilitation</li><li>Home-based care</li><li>Family and caregiver education</li><li>Coordinated referrals</li><li>Follow-up and progress reviews</li></ul><p class="note">Services are not automatically bundled into one package.</p></div></details>`;
+  setMedia(s);mountCards($('#mrow'),STORIES.map((_,k)=>k).filter(k=>k!==i))}
+function openPage(i,fromEl,fromRect){
+  $('#pill').style.opacity=0;api.stopPreview&&api.stopPreview();fillPage(i);const pgr=$('#pgr');pgr.classList.remove('show');mode='page';pageEl.scrollTop=0;
+  pageEl.classList.add('on');$('#gui').classList.add('off');$('#gl').style.opacity=0;listEl.classList.remove('on');setNav();setToggle();
+  const more=$('.more',pageEl);more.after(endEl);
+  const t=document.fonts?0:0;requestAnimationFrame(()=>{
+    const to=$('#media').getBoundingClientRect(),fr=fromRect||(fromEl&&fromEl.getBoundingClientRect());
+    if(fr&&!reduce&&fr.width>10){const f=document.createElement('div');f.style.cssText=`position:fixed;z-index:50;left:${to.left}px;top:${to.top}px;width:${to.width}px;height:${to.height}px;background:url(${STORIES[i].url}) center/cover;transform-origin:0 0;pointer-events:none`;document.body.appendChild(f);
+      const a=f.animate([{transform:`translate(${fr.left-to.left}px,${fr.top-to.top}px) scale(${fr.width/to.width},${fr.height/to.height})`},{transform:'none'}],{duration:300,easing:'cubic-bezier(.25,.75,.25,1)'});a.onfinish=()=>f.remove()}
+    setTimeout(()=>pgr.classList.add('show'),reduce?0:700)})}
+$('#back').onclick=goGallery;$('#tg').onclick=goGallery;$('#tl').onclick=()=>openList();$('#enter').onclick=()=>openList();
+$('#nav-stories').onclick=e=>{e.preventDefault();goGallery()};$('#nav-contact').onclick=e=>{e.preventDefault();openList(true)};
+document.addEventListener('click',e=>{const a=e.target.closest('[data-go="list"]');if(a){e.preventDefault();openList()}});
+$('#burger').onclick=()=>{const o=$('#links').classList.toggle('open');$('#burger').setAttribute('aria-expanded',o)};$('#links').onclick=()=>{$('#links').classList.remove('open')};
+$('#theme').onclick=()=>{window.jlTheme&&jlTheme.toggle()};
+document.addEventListener('jl-theme',()=>{api.theme&&api.theme()});
+mountCards($('#grid'),STORIES.map((_,i)=>i));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){if(mode==='page'||mode==='list')goGallery();else api.stepBack&&api.stepBack()}});
+
+/* ---- 3D gallery ---- */
+async function init3d(){
+  let THREE;try{THREE=await import('three')}catch(e){return false}
+  const cv=$('#gl');let renderer;try{renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true})}catch(e){return false}
+  renderer.setPixelRatio(Math.min(devicePixelRatio||1,2));renderer.outputColorSpace=THREE.SRGBColorSpace;
+  const scene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(56,1,.05,100),R=18,RIN=12.2,H=6.2,PW=1.36,PH=PW*763/567,PY=1.95,STEP=Math.PI*2/36;
+  const canvasTex=(c,rep)=>{const t=new THREE.CanvasTexture(c);t.colorSpace=THREE.SRGBColorSpace;t.anisotropy=renderer.capabilities.getMaxAnisotropy();return t};
+  const vg=st=>{const c=document.createElement('canvas');c.width=4;c.height=256;const g=c.getContext('2d'),gr=g.createLinearGradient(0,0,0,256);st.forEach(s=>gr.addColorStop(s[0],s[1]));g.fillStyle=gr;g.fillRect(0,0,4,256);return canvasTex(c)};
+  const fg=st=>{const c=document.createElement('canvas');c.width=c.height=1024;const g=c.getContext('2d'),gr=g.createRadialGradient(512,512,512*RIN/R,512,512,512);st.forEach(s=>gr.addColorStop(s[0],s[1]));g.fillStyle=gr;g.fillRect(0,0,1024,1024);return canvasTex(c)};
+  const PAL={light:{bg:'#FBFAF7',o:[[0,'#EEE9DF'],[.2,'#F7F4EE'],[.6,'#F7F4EE'],[.86,'#F0EBE0'],[1,'#E6DFD1']],i:[[0,'#F0ECE3'],[.3,'#FBF9F4'],[.8,'#F8F5EE'],[1,'#EAE4D6']],f:[[0,'#E4DDCF'],[.55,'#ECE6D9'],[1,'#E7E0D1']],ce:'#F6F3EC',fr:'#B98A3E'},
+             dark:{bg:'#0F1214',o:[[0,'#14181B'],[.2,'#1B2024'],[.6,'#1B2024'],[.86,'#161A1D'],[1,'#101315']],i:[[0,'#161A1D'],[.3,'#20262A'],[.8,'#1C2226'],[1,'#12161A']],f:[[0,'#101315'],[.55,'#171C1F'],[1,'#12161A']],ce:'#0F1214',fr:'#8B6A33'}};
+  const mO=new THREE.MeshBasicMaterial({side:THREE.BackSide}),mI=new THREE.MeshBasicMaterial(),mF=new THREE.MeshBasicMaterial(),mC=new THREE.MeshBasicMaterial({side:THREE.BackSide}),mFr=new THREE.MeshBasicMaterial();
+  const mk=(geo,m,f)=>{const o=new THREE.Mesh(geo,m);f&&f(o);scene.add(o);return o};
+  mk(new THREE.CylinderGeometry(R,R,H,160,1,true),mO,o=>o.position.y=H/2);mk(new THREE.CylinderGeometry(RIN,RIN,H,120,1,true),mI,o=>o.position.y=H/2);
+  mk(new THREE.CircleGeometry(R,160),mF,o=>o.rotation.x=-Math.PI/2);mk(new THREE.CircleGeometry(R,160),mC,o=>{o.rotation.x=-Math.PI/2;o.position.y=H});
+  /* per-story textures */
+  STORIES.forEach(s=>{drawPoster(s);s.tex=canvasTex(s.cv);s.mP=new THREE.MeshBasicMaterial({map:s.tex});s.lc=document.createElement('canvas');s.lc.width=800;s.lc.height=330;s.lt=canvasTex(s.lc);s.mL=new THREE.MeshBasicMaterial({map:s.lt,transparent:true,depthWrite:false})});
+  function drawLabel(s){const g=s.lc.getContext('2d'),d=isDark();g.clearRect(0,0,800,330);g.fillStyle=d?'#2CC9CB':'#087F81';g.font='600 24px Jost,sans-serif';g.letterSpacing='3px';g.fillText(s.tag.toUpperCase(),20,40);
+    g.fillStyle=d?'#EEF1F2':'#23262B';g.font='700 36px Jost,sans-serif';g.letterSpacing='.5px';const ls=wrap(g,s.title.toUpperCase(),760,2);ls.forEach((t,i)=>g.fillText(t,20,92+i*44));
+    g.fillStyle=d?'#A3ABB0':'#5E6369';g.font='italic 500 32px "Cormorant Garamond",Georgia,serif';g.letterSpacing='0px';g.fillText(s.name,20,92+ls.length*44+8);s.lt.needsUpdate=true}
+  const shadowTex=(()=>{const c=document.createElement('canvas');c.width=c.height=256;const g=c.getContext('2d'),gr=g.createRadialGradient(128,128,32,128,128,128);gr.addColorStop(0,'rgba(60,50,30,.3)');gr.addColorStop(1,'rgba(60,50,30,0)');g.fillStyle=gr;g.fillRect(0,0,256,256);return new THREE.CanvasTexture(c)})();
+  const mS=new THREE.MeshBasicMaterial({map:shadowTex,transparent:true,depthWrite:false});
+  function theme(){const p=PAL[isDark()?'dark':'light'];[mO,mI,mF].forEach((m,k)=>{m.map&&m.map.dispose();m.map=k===0?vg(p.o):k===1?vg(p.i):fg(p.f);m.needsUpdate=true});mC.color.set(p.ce);mFr.color.set(p.fr);scene.background=new THREE.Color(p.bg);scene.fog=new THREE.Fog(p.bg,10,46);$('#veil').style.background=p.bg;STORIES.forEach(drawLabel)}
+  const frameGeo=new THREE.BoxGeometry(PW+.07,PH+.07,.06),printGeo=new THREE.PlaneGeometry(PW,PH),shGeo=new THREE.PlaneGeometry(PW*1.25,PH*1.18),lbGeo=new THREE.PlaneGeometry(PW,PW*330/800);
+  const prints=[];
+  function hang(ang,rad,outer,idx){const g=new THREE.Group();g.position.set(rad*Math.cos(ang),0,rad*Math.sin(ang));outer?g.lookAt(0,0,0):g.lookAt(2*g.position.x,0,2*g.position.z);
+    const sh=new THREE.Mesh(shGeo,mS);sh.position.set(.05,PY-.06,.01);const fr=new THREE.Mesh(frameGeo,mFr);fr.position.set(0,PY,.045);
+    const pr=new THREE.Mesh(printGeo,STORIES[idx].mP);pr.position.set(0,PY,.077);pr.userData={i:idx,ang,outer};
+    const lb=new THREE.Mesh(lbGeo,STORIES[idx].mL);lb.position.set(0,PY-PH/2-.38,.02);g.add(sh,fr,pr,lb);scene.add(g);prints.push(pr)}
+  for(let s=0;s<36;s++)hang(s*STEP,17.98,true,s%9);for(let k=0;k<24;k++)hang((k+.5)*Math.PI*2/24,12.22,false,(k+4)%9);
+  theme();api.theme=theme;
+  /* camera model */
+  const PORT=()=>smallQ.matches&&innerWidth<innerHeight,D=()=>.14+(PORT()?.9*STEP:0);
+  const walkPose=()=>PORT()?{r:15.4,yaw:-.42,y:1.9,pitch:-.1}:{r:15.6,yaw:-.3,y:1.92,pitch:-.12};
+  const focusPose=(ang,outer)=>PORT()?{th:ang,r:outer?R-5.2:RIN+5.2,yaw:outer?Math.PI/2:-Math.PI/2,y:PY-1.05,pitch:0}:{th:ang,r:outer?R-4.26:RIN+4.26,yaw:outer?Math.PI/2:-Math.PI/2,y:PY-.52,pitch:0};
+  const P={th:D(),...walkPose()};let target=P.th,state='walk',glide=null,focused=null;
+  function apply(p){const c=Math.cos(p.th),s=Math.sin(p.th);cam.position.set(p.r*c,p.y,p.r*s);const tx=Math.sin(p.th),tz=-Math.cos(p.th),cy=Math.cos(p.yaw),sy=Math.sin(p.yaw);cam.lookAt(cam.position.x+cy*tx+sy*c,p.y+p.pitch,cam.position.z+cy*tz+sy*s)}
+  const wrapA=a=>{while(a>Math.PI)a-=2*Math.PI;while(a<-Math.PI)a+=2*Math.PI;return a};
+  const e4=t=>1-Math.pow(1-t,4),e2=t=>1-(1-t)*(1-t),e3=t=>1-Math.pow(1-t,3);
+  function glideTo(to,done){const from={th:P.th,r:P.r,yaw:P.yaw,y:P.y,pitch:P.pitch};to.th=from.th+wrapA(to.th-from.th);if(reduce){Object.assign(P,to);target=P.th;done&&done();return}glide={from,to,t0:performance.now(),dur:950,done}}
+  const hints=(a,b)=>{$('#h1').textContent=a;$('#h2').textContent=b};
+  function focus(m){const o=m.userData;focused=m;state='focus';glideTo(focusPose(o.ang,o.outer));hints('Click the story to open it','Esc or click away to step back');startPreview(o.i)}
+  function stepBack(){if(state!=='focus')return;const th=focused.userData.ang+D();focused=null;state='walk';stopPreview();hints('Scroll or drag to walk the gallery','Click a story to look closer');target=th;glideTo({th,...walkPose()})}
+  api.stepBack=stepBack;
+  api.refocus=i=>{let best=null,bd=9;prints.forEach(m=>{if(m.userData.i===i&&m.userData.outer){const d=Math.abs(wrapA(m.userData.ang-P.th));if(d<bd){bd=d;best=m}}});best&&focus(best)};
+  /* 5-second muted preview on the focused card */
+  let pv=null;
+  function startPreview(i){stopPreview();const s=STORIES[i],v=document.createElement('video');v.muted=true;v.loop=true;v.playsInline=true;v.preload='metadata';pv={v,i};v.oncanplay=()=>{if(!pv||pv.v!==v)return;const t=new THREE.VideoTexture(v);t.colorSpace=THREE.SRGBColorSpace;s.mP.map=t;s.mP.needsUpdate=true;v.play().catch(()=>{})};v.onerror=()=>{};v.src=s.preview;v.load()}
+  function stopPreview(){if(!pv)return;const s=STORIES[pv.i];pv.v.pause();pv.v.removeAttribute('src');pv.v.load();s.mP.map=s.tex;s.mP.needsUpdate=true;pv=null}api.stopPreview=stopPreview;
+  /* input */
+  const main=$('#gallery'),ray=new THREE.Raycaster(),ptr=new THREE.Vector2();
+  const pick=(x,y)=>{const r=main.getBoundingClientRect();ptr.set((x-r.left)/r.width*2-1,-((y-r.top)/r.height*2-1));ray.setFromCamera(ptr,cam);const h=ray.intersectObjects(prints,false);return h.length?h[0].object:null};
+  main.addEventListener('wheel',e=>{if(mode!=='gallery')return;e.preventDefault();if(state==='focus'){stepBack();return}target+=-e.deltaY*(e.deltaMode===1?33:1)*.0016},{passive:false});
+  let down=null,moved=false;
+  main.addEventListener('pointerdown',e=>{if(mode!=='gallery')return;down={x:e.clientX,y:e.clientY,t:target};moved=false;main.setPointerCapture(e.pointerId)});
+  main.addEventListener('pointermove',e=>{if(!down){if(mode==='gallery'){const m=pick(e.clientX,e.clientY);main.classList.toggle('over',!!m);const pill=$('#pill');if(state==='focus'&&m===focused&&!smallQ.matches){pill.style.left=e.clientX+'px';pill.style.top=e.clientY+'px';pill.style.opacity=1}else pill.style.opacity=0}return}
+    const dx=e.clientX-down.x,dy=e.clientY-down.y;if(!moved&&Math.hypot(dx,dy)>6){moved=true;main.classList.add('drag');if(state==='focus'){stepBack()}}
+    if(moved&&state==='walk')target=down.t+(Math.abs(dx)>Math.abs(dy)?dx:dy)*(smallQ.matches?.0042:.0022)});
+  const up=e=>{if(!down)return;const was=moved;down=null;main.classList.remove('drag');if(was||mode!=='gallery')return;const m=pick(e.clientX,e.clientY);
+    if(state==='walk'){if(m)focus(m)}else if(m===focused)openPage(m.userData.i,null,screenRect(m));else if(m)focus(m);else stepBack()};
+  main.addEventListener('pointerup',up);main.addEventListener('pointercancel',()=>{down=null});main.addEventListener('pointerleave',()=>{$('#pill').style.opacity=0});
+  function screenRect(m){const v=[[-1,-1],[1,-1],[1,1],[-1,1]].map(([a,b])=>new THREE.Vector3(a*PW/2,b*PH/2,0).applyMatrix4(m.matrixWorld).project(cam));const w=innerWidth,h=innerHeight,xs=v.map(p=>(p.x+1)/2*w),ys=v.map(p=>(1-p.y)/2*h);return{left:Math.min(...xs),top:Math.min(...ys),width:Math.max(...xs)-Math.min(...xs),height:Math.max(...ys)-Math.min(...ys)}}
+  const snap=d=>{if(mode!=='gallery')return;if(state==='focus'){stepBack();return}target=(Math.round((target-D())/STEP)-d)*STEP+D()};
+  $('#next').onclick=()=>snap(1);$('#prev').onclick=()=>snap(-1);
+  addEventListener('keydown',e=>{if(mode!=='gallery')return;if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();snap(1)}if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();snap(-1)}});
+  /* small-screen pill: visible on the focused card */
+  setInterval(()=>{if(state==='focus'&&smallQ.matches&&mode==='gallery'){const p=$('#pill');p.style.left='50%';p.style.top=(innerHeight*.55)+'px';p.style.opacity=1}},400);
+  function size(){const w=innerWidth,h=innerHeight;renderer.setSize(w,h,false);cam.aspect=w/h;cam.fov=w>=h?56:70;cam.updateProjectionMatrix()}
+  addEventListener('resize',size);size();
+  /* loop + entrance */
+  let last=performance.now(),t0=last,intro=!reduce;apply(P);
+  const place=()=>{$('#pill').style.opacity=0};
+  function frame(now){requestAnimationFrame(frame);const dt=Math.min(.05,(now-last)/1000);last=now;if(mode!=='gallery'&&!glide){return}
+    if(glide){const t=Math.min(1,(now-glide.t0)/glide.dur),f=glide.from,o=glide.to;P.th=f.th+(o.th-f.th)*e4(t);P.yaw=f.yaw+(o.yaw-f.yaw)*e2(t);['r','y','pitch'].forEach(k=>P[k]=f[k]+(o[k]-f[k])*e3(t));if(t>=1){const d=glide.done;glide=null;target=P.th;d&&d()}}
+    else if(state==='walk'){if(reduce)P.th=target;else P.th+=(target-P.th)*(1-Math.exp(-dt/.36))}
+    const w=walkPose();if(state==='walk'&&!glide){P.r=w.r;P.yaw=w.yaw;P.y=w.y;P.pitch=w.pitch}
+    let q={...P};if(intro){const k=Math.min(1,(now-t0)/1400),e=1-Math.pow(2,-10*k);q.th=P.th+.16*(1-e);q.r=P.r-.35*(1-e);if(k>=1)intro=false}
+    apply(q);renderer.render(scene,cam)}
+  requestAnimationFrame(frame);
+  /* entrance: veil + masked text rise + nav fade */
+  const v=$('#veil');if(reduce){v.style.display='none'}else{v.animate([{opacity:1},{opacity:0}],{duration:900,easing:'ease-out',fill:'forwards'}).onfinish=()=>v.style.display='none';
+    $$('.gui .m>span').forEach((s,i)=>s.animate([{transform:'translateY(105%)'},{transform:'none'}],{duration:1000,delay:250+i*60,easing:'cubic-bezier(.2,.7,.2,1)',fill:'backwards'}));
+    [...nav.children].forEach((c,i)=>c.animate([{opacity:0},{opacity:1}],{duration:1000,delay:250+i*60,fill:'backwards'}))}
+  return true}
+
+/* ---- boot ---- */
+(async()=>{
+  try{await Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,1500))])}catch(e){}
+  STORIES.forEach(drawPoster);loadThumbs();
+  const ok=await init3d().catch(()=>false);
+  if(!ok){document.body.classList.add('no3d');openList();$('#veil').style.display='none'}
+  const hk=STORIES.findIndex(x=>x.id===location.hash.slice(1));if(hk>=0)openPage(hk);
+})();
+
+</script>
+</body>
+</html>
